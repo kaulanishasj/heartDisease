@@ -103,9 +103,15 @@ def visual():
     return template.render(variables)
 
 @app.route('/data_storage')
-def visual():
+def data_storage():
    
     template = JINJA_ENVIRONMENT.get_template('templates/dataStorage.html')
+    return template.render(variables)
+
+@app.route('/source_code')
+def source_code():
+   
+    template = JINJA_ENVIRONMENT.get_template('templates/sourceCode.html')
     return template.render(variables)
 
 @app.errorhandler(404)
