@@ -26,9 +26,6 @@ import httplib2
 from apiclient.discovery import build
 import urllib
 
-
-
-
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 # this is used for constructing URLs to google's APIS
@@ -102,17 +99,16 @@ def visual():
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
 
-@app.route('/data_storage')
+@app.route('/data_structure')
 def data_storage():
-   
-    template = JINJA_ENVIRONMENT.get_template('templates/dataStorage.html')
-    return template.render(variables)
+    template = JINJA_ENVIRONMENT.get_template('templates/dataStructure.html')
+    return template.render()
+
 
 @app.route('/source_code')
 def source_code():
-   
     template = JINJA_ENVIRONMENT.get_template('templates/sourceCode.html')
-    return template.render(variables)
+    return template.render()
 
 @app.errorhandler(404)
 def page_not_found(e):
