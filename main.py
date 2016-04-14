@@ -14,16 +14,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from flask import Flask, request, url_for
+app = Flask(__name__)
 import webapp2
 import os
 import jinja2
 import logging
 import json
-import urllib
 import csv
 import httplib2
 from apiclient.discovery import build
+import urllib
 
+
+
+
+# Note: We don't need to call run() since our application is embedded within
+# the App Engine WSGI application server.
 # this is used for constructing URLs to google's APIS
 from googleapiclient.discovery import build
 
@@ -31,11 +38,6 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
-
-
-# Import the Flask Framework
-from flask import Flask, request
-app = Flask(__name__)
 
 def get_all_data():    
     # open the data stored in a file called "raw_data.csv"
@@ -72,16 +74,17 @@ def get_data(data):
         both = float(male) + float(female)
         femaleData[state] = female
         maleData[state] = male
-        bothData[state] = both
-        
-        
+        bothData[state] = both 
     return (femaleData, maleData, bothData)
 
     
 @app.route('/')
 def index():
     template = JINJA_ENVIRONMENT.get_template('templates/home.html')
-    return template.render()
+    image1 = url_for('static', filename='images/image1.jpeg')
+    image2 = url_for('static', filename='images/image2.jpg')
+    image3 = url_for('static', filename='images/image3.jpg')
+    return template.render(image1 = image1, image2 = image2, image3 = image3)
 
 
 @app.route('/about')
