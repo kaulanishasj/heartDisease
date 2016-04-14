@@ -102,6 +102,12 @@ def visual():
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
 
+@app.route('/data_storage')
+def visual():
+   
+    template = JINJA_ENVIRONMENT.get_template('templates/dataStorage.html')
+    return template.render(variables)
+
 @app.errorhandler(404)
 def page_not_found(e):
     """Return a custom 404 error."""
