@@ -2,3 +2,9 @@
     margin-right: 5px;
     margin-bottom: 5px;
 }
+.checkbox-grid li {
+    display: block;
+    float: left;
+    width: 25%;
+    background-color: red;
+}

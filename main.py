@@ -26,6 +26,7 @@ import httplib2
 from apiclient.discovery import build
 import urllib
 
+
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 # this is used for constructing URLs to google's APIS
@@ -90,12 +91,29 @@ def about():
     return template.render()
 
 
+def chunks(l, n):
+    for i in range(0, len(l), n):
+        yield l[i:i+n]
+
+
 @app.route('/visual')
 def visual():
     data = get_all_data()
     (femaleData, maleData, bothData) = get_data(data)
     
-    variables = {'data':data, 'female': femaleData, 'male': maleData, 'both': bothData}
+    with open("data/all_clean_data.csv", "rb") as f:
+        reader = csv.reader(f)
+        i = reader.next()
+        rest = [row for row in reader]
+
+    rows = list(chunks(i, 5))
+
+    translators = json.dumps({'age' : 'AGE', 'restecg' : "RestFUL"})
+
+
+
+
+    variables = {'data':data, 'female': femaleData, 'male': maleData, 'both': bothData, 'rows':rows, 'translators':translators}
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
 
