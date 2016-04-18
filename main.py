@@ -107,10 +107,8 @@ def visual():
         rest = [row for row in reader]
 
     rows = list(chunks(i, 5))
-
-    translators = json.dumps({'age' : 'AGE', 'restecg' : "RestFUL"})
-
-
+    
+    translators = json.dumps({"age" : "AGE", "restecg" : "RestFUL"})
 
 
     variables = {'data':data, 'female': femaleData, 'male': maleData, 'both': bothData, 'rows':rows, 'translators':translators}
