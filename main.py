@@ -111,7 +111,7 @@ def visual():
     translators = json.dumps({"age" : "AGE", "restecg" : "RestFUL"})
 
 
-    variables = {'data':data, 'female': femaleData, 'male': maleData, 'both': bothData, 'rows':rows, 'translators':translators}
+    variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 'rows':rows, 'translators':translators}
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
 

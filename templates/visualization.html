@@ -64,10 +64,10 @@
         in a state where high rates of heart disease? These visuals should give you 
         a sense of the general rates of heart disease mortality in the US. 
       </p>
-      <h2>For Females</h2>
+      <h2>For All</h2>
       <svg width="960" height="600" id="statesvg"></svg> <!-- svg to hold the map. -->
 
-      <h2>For All</h2>
+      <h2>For Females</h2>
       <svg width="960" height="600" id="femaleStates"></svg> <!-- svg to hold the map. -->
      
       <h2>For Males</h2>
@@ -137,14 +137,14 @@
     // ----------- EVERY CHART NEEDS DATA -------------- 
 
         function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
-            return "<h4>"+n+"</h4><table>"+
-                "<tr><td>Death Count </td><td>"+(d.count)+"</td></tr>"+
+            return "<h4>"+n+"  </h4> <table> " +
+                "<tr><td>  Death Count   </td>   <td>  "  + (d.count) +" </td> </tr>"+
                 "</table>";
         }
         
         //Data Format?
         var female = {{female|safe}}
-        var data = {{both|safe}}
+        var bothData = {{bothData|safe}}
         var male = {{male|safe}}
 
         var states = {
@@ -214,7 +214,7 @@
         "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
         "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
             .forEach(function(d){ 
-                var count = (data[states[d]]);
+                var count = (bothData[states[d]]);
                 sampleData[d]={count:count, color:d3.interpolate("#ffffcc", "#800026")(count/200)}; 
             });
 
