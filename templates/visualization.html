@@ -314,26 +314,23 @@
 
     x.domain(dimensions = selectedDimensions.filter(function(d) {
 
-      return d != "name" && (y[d] = d3.scale.linear()
-          .domain(d3.extent(cars, function(p) { return +p[d]; }))
-          .range([height, 0]));
-      
-      // if(d === "colour") {
-      //     y[d] = d3.scale.ordinal()
-      //       .domain(cars.map(function(p) { return p[d]; }))
-      //       .rangePoints([h, 0]);
+      // return d != "name" && (y[d] = d3.scale.linear()
+      //     .domain(d3.extent(cars, function(p) { return +p[d]; }))
+      //     .range([height, 0]));
 
-      // }
-      // else {
-      //     y[d] = d3.scale.linear()
-      //       .domain(d3.extent(cars, function(p) { return +p[d]; }))
-      //       .range([h, 0]);
-      // }
+      if(d === "datasource") {
+          y[d] = d3.scale.ordinal()
+            .domain(cars.map(function(p) { return p[d]; }))
+            .rangePoints([height, 0]);
 
-    return true;
+      }
+      else {
+          y[d] = d3.scale.linear()
+            .domain(d3.extent(cars, function(p) { return +p[d]; }))
+            .range([height, 0]);
+      }
 
-
-
+      return true;
 
     }));
 
