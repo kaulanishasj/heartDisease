@@ -71,7 +71,7 @@
         </div>
         <div class="col-md-6">
           <!--- <img class="featurette-image img-fluid center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> --->
-		  <iframe width="700" height="500" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas&amp;q=select+col18%2C+count()+from+1QHnnSYtqXuC1vL1bhMOjVcbllFiBtmfzuYmFUoeA+group+by+col18+order+by+col18+asc+limit+10&amp;viz=GVIZ&amp;t=PIE&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_useFirstColumnAsDomain=true&amp;gco_is3D=false&amp;gco_pieHole=0&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D&amp;gco_vAxes=%5B%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_title=Percentage+of+data+aggregated+from+different+sources&amp;width=700&amp;height=500"></iframe>
+		  <iframe width="650" height="500" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas&amp;q=select+col18%2C+count()+from+1QHnnSYtqXuC1vL1bhMOjVcbllFiBtmfzuYmFUoeA+group+by+col18+order+by+col18+asc+limit+10&amp;viz=GVIZ&amp;t=PIE&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_useFirstColumnAsDomain=true&amp;gco_is3D=false&amp;gco_pieHole=0&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D&amp;gco_vAxes=%5B%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_title=Percentage+of+data+aggregated+from+different+sources&amp;width=700&amp;height=500"></iframe>
         </div>
       </div>
 
@@ -82,17 +82,27 @@
 		  The target labels of this data initially ranged from 0 to 4, where 0 implied no presence of heart disease. It was not clear what values 1 through represent from the data representation, but they all denoted the presence of some form of heart disease. Hence we transformed 1 through 4 values to 1, so that 0 implies no heart disease and 1 implies presence of heart disease. <br>
 		  With this transformed dataset we first performed missing value analysis.</p>
         </div>
-      </div>
 
       <hr class="featurette-divider">
 	  <div class="row featurette">
-        <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-fluid center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
+          <h4 class="featurette-heading">Missing Value Analysis</h4>
+          <p class="lead">We performed missing value analysis on the dataset with 50 variables remaining. Many variables had a large proportion of missing values which need to be imputed before we use it for prediction. We discarded all the variables (17 variables in the dataset) that have more than 10% missing values proportion so that we don't induce too much bias into the original data through imputation. <br>
+		  We then carefully examined each of the remaining variables to determine if it made sense to impute values for these variables. While some variable definitions were not very clear from the data sources, other variables such as day of exercise, month of exercise, etc. were too specific to be imputed based on mean/mode/standard deviation values. Removing these variables finally resulted in a dataset with 18 features and a binary target variable which denoted whether the patient suffered from heart disease.</p>
+		  </div>
+          <iframe width="1100" height="500" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas&amp;q=select+col0%2C+col2+from+19r9gybNVPSwLgxg1484ZWXAfoEbPLJvR9EEDq58p+order+by+col2+asc+limit+20&amp;viz=GVIZ&amp;t=COLUMN&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_vAxes=%5B%7B%22title%22%3Anull%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_useFirstColumnAsDomain=true&amp;gco_isStacked=false&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22viewWindow%22%3Anull%2C+%22viewWindowMode%22%3Anull%7D&amp;gco_legend=none&amp;gco_title=Percentage+of+Missing+Values&amp;gco_titleTextStyle=%7B%22color%22%3A%22%23000%22%2C+%22fontSize%22%3A%2224%22%2C+%22bold%22%3Atrue%7D&amp;gco_series=%7B%220%22%3A%7B%22color%22%3A%22%23a64d79%22%7D%7D&amp;gco_tooltip=%7B%22isHtml%22%3Atrue%7D&amp;tmplt=1&amp;width=1100&amp;height=500"></iframe>
+	
+	<hr class="featurette-divider">
+	<div class="row featurette">
+          <h4 class="featurette-heading">Outlier Analysis</h4>
+          <p class="lead">blah blah blah about outliers</p>
+		  </div>
+
+    <hr class="featurette-divider">		  
+	<div class="row featurette">
+          <h4 class="featurette-heading">Missing Values Imputation</h4>
+          <p class="lead">how missing values were imputed</p>
+		  </div>	
+		  
       </div>
 
 
