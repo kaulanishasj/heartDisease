@@ -22,6 +22,10 @@ import jinja2
 import logging
 import json
 import csv
+import cgi
+from google.appengine.api import users
+import webapp2
+
 import httplib2
 from apiclient.discovery import build
 import urllib
@@ -130,7 +134,40 @@ def source_code():
 def quality():
     template = JINJA_ENVIRONMENT.get_template('templates/quality.html')
     return template.render()
+# Define a route for the default URL, which loads the form
 
+@app.route('/form')
+def form():
+    css_url = 'css/style.css'
+    submit_url = url_for('try1')
+    template = JINJA_ENVIRONMENT.get_template('templates/try_new.html')
+    return template.render( css_url= css_url , submit_url= submit_url)
+
+@app.route('/try1', methods=['POST'])
+def try1():
+    template = JINJA_ENVIRONMENT.get_template('templates/predict.html')
+    firstname = request.form['fname']
+    lastname = request.form['lname']
+    age = request.form['age']
+    sex = request.form['sex']
+    chestpain = request.form['chestpain']
+    bp = request.form['bp']
+    chol = request.form['chol']
+    fbsugar = request.form['fbsugar']
+    ecg = request.form['ecg']
+    thalach = request.form['thalach']
+    excercise = request.form['excercise']
+    oldpeak = request.form['oldpeak']
+    slope = request.form['slope']
+    ca = request.form['ca']
+    thal = request.form['thal']
+    return template.render(firstname=firstname, lastname=lastname, chestpain = chestpain, age = age, sex= sex, bp = bp, chol = chol, fbsugar =fbsugar, ecg = ecg, thalach = thalach, excercise = excercise, oldpeak = oldpeak, slope = slope
+                           , ca = ca, thal= thal)
+    # return template.render(firstname = firstname,lastname = lastname, age = age,
+    #                        sex = sex, chestpain =
+    #                        ecg=ecg, thalach=thalach,
+    #                        bp = bp, fbsugar = fbsugar)
+    # slope = slope, thal = thal , excercise=excercise, oldpeak=oldpeak,
 @app.errorhandler(404)
 def page_not_found(e):
     """Return a custom 404 error."""

@@ -46,7 +46,7 @@
             </ul>
          </div>
         </li>
-        <li><button type="button" class="btn btn-primary" style="margin: 0px 0px 0px 17px;">TRY IT!!</button></li>
+         <li><a class="btn btn-primary" href="/form" role="button">TRY!!</a></li>
       </ul>
     </nav>
      <div style="margin: 53px 85px 7px 49px;" align="center">
@@ -317,6 +317,24 @@
       return d != "name" && (y[d] = d3.scale.linear()
           .domain(d3.extent(cars, function(p) { return +p[d]; }))
           .range([height, 0]));
+      
+      // if(d === "colour") {
+      //     y[d] = d3.scale.ordinal()
+      //       .domain(cars.map(function(p) { return p[d]; }))
+      //       .rangePoints([h, 0]);
+
+      // }
+      // else {
+      //     y[d] = d3.scale.linear()
+      //       .domain(d3.extent(cars, function(p) { return +p[d]; }))
+      //       .range([h, 0]);
+      // }
+
+    return true;
+
+
+
+
     }));
 
     // Add grey background lines for context.

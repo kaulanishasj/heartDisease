@@ -42,36 +42,50 @@
             </ul>
          </div>
         </li>
-        <li><button type="button" class="btn btn-primary" style="margin: 0px 0px 0px 17px;">TRY IT!!</button></li>
+        <li><a class="btn btn-primary" href="/form" role="button">TRY!!</a></li>
       </ul>
     </nav>
     <div class="container marketing">
+	<!-----
       <h3>
         <span class="text-muted">Write about: any example of causality vs correlation? any example of bayes theorem? 
         Sampling error or the distribution? 
         is the data biased? Random Bias, Systematic Bias, Selection Bias, Non-response Bias. Residual analysis of finding if the variable in independent
         Is the data a good sample? Data Re-usability ? 
-
-
       </span></h3>
+	  ---->
+	  <h2 class="featurette-heading">Data Sources
+          <p class="lead">We used two kinds of data sets to answer the two questions we formed. In order to answer the question on "How prevalent is Heart Disease in USA?" we used fact sheets published by Center for Disease Control and Prevention (CDC) which can be found <a href = "http://www.cdc.gov/heartdisease/facts.htm"> here.</a>
+		  Various statistics about heart disease prevalance are regularly collected and maintained by CDC. Hence this dataset seemed to be right choice to talk about the prevalance of this disease.</p>
+		  <p class = "lead"> In order to answer the question on "What may be the causes of heart disease?" and "What are my chances of being suffering from heart disease?" We used dataset published on <a href = "http://archive.ics.uci.edu/ml/datasets/Heart+Disease"> UCI data repository.</a> This dataset contained various characteristics of patients such as their cholestrol level, whether they had chest pain, age, sex, etc. along with whether they were diagnosed with a heart disease. Hence we used this dataset to provide insights on what may be the causes of heart diseases using the information provided for diagnosed patients.</p>
+		  <p class = "lead"> The datasets used for exploration from CDC did not require any processing. The data was very clean and coherent with no outliers. Hence we only discussed the UCI heart disease dataset in the following sections which have interesting data quality characteristics. </p>
 
       <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
 
       <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <div class="col-md-6">
+          <h4 class="featurette-heading"> UCI Heart Disease Dataset </h4>
+          <p class="lead" font size = "6">The dataset used in our project was aggregated from four different datasets collected from Hungary, Switzerland, and the US. Percentage of aggregated data obtained from each source is shown in the adjacent pie chart. The data itself was available in a text file with each row broken up across several lines. Using a parser script we wrote in python, we aggregated data from these sources and stored it in csv format. After aggregation, we had 899 records with 76 attributes. However, after initial exploration, we got rid of 26 variables which contained the same value across all records of the dataset.<br> </p>
         </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-fluid center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <div class="col-md-6">
+          <!--- <img class="featurette-image img-fluid center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> --->
+		  <iframe width="700" height="500" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas&amp;q=select+col18%2C+count()+from+1QHnnSYtqXuC1vL1bhMOjVcbllFiBtmfzuYmFUoeA+group+by+col18+order+by+col18+asc+limit+10&amp;viz=GVIZ&amp;t=PIE&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_useFirstColumnAsDomain=true&amp;gco_is3D=false&amp;gco_pieHole=0&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D&amp;gco_vAxes=%5B%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_title=Percentage+of+data+aggregated+from+different+sources&amp;width=700&amp;height=500"></iframe>
         </div>
       </div>
 
       <hr class="featurette-divider">
-
       <div class="row featurette">
+          <h4 class="featurette-heading">Data Transformation</h4>
+          <p class="lead">
+		  The target labels of this data initially ranged from 0 to 4, where 0 implied no presence of heart disease. It was not clear what values 1 through represent from the data representation, but they all denoted the presence of some form of heart disease. Hence we transformed 1 through 4 values to 1, so that 0 implies no heart disease and 1 implies presence of heart disease. <br>
+		  With this transformed dataset we first performed missing value analysis.</p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+	  <div class="row featurette">
         <div class="col-md-7 col-md-push-5">
           <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
           <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
@@ -81,19 +95,6 @@
         </div>
       </div>
 
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-fluid center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
 
       <!-- /END THE FEATURETTES -->
 
