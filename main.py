@@ -133,7 +133,9 @@ def source_code():
 @app.route('/quality')
 def quality():
     template = JINJA_ENVIRONMENT.get_template('templates/quality.html')
-    return template.render()
+    datapipeproj1 = url_for('static', filename='images/datapipeproj1.jpg')
+    datapipeproj2 = url_for('static', filename='images/datapipeproj2.jpg')
+    return template.render(datapipeproj1= datapipeproj1, datapipeproj2 = datapipeproj2)
 # Define a route for the default URL, which loads the form
 
 @app.route('/form')
