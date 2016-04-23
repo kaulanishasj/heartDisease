@@ -24,7 +24,6 @@ import json
 import csv
 import cgi
 from google.appengine.api import users
-import webapp2
 
 import httplib2
 from apiclient.discovery import build
@@ -128,7 +127,9 @@ def data_storage():
 @app.route('/source_code')
 def source_code():
     template = JINJA_ENVIRONMENT.get_template('templates/sourceCode.html')
-    return template.render()
+    image4 = url_for('static', filename='images/image4.jpg')
+
+    return template.render(image4=image4)
 
 @app.route('/quality')
 def quality():
