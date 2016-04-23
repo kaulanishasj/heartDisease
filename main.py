@@ -68,9 +68,14 @@ def get_data(data):
     femaleData = {}
     maleData = {}
     bothData = {}
+    femaleTotal = 0
+    maleTotal = 0
+    bothTotal = 0
+    row_count = 0
     femaleAv = 0
     maleAv = 0
     bothAv = 0
+
     for row in data:
         state = row[0]
         male = float(row[1])
@@ -79,10 +84,15 @@ def get_data(data):
         femaleData[state] = female
         maleData[state] = male
         bothData[state] = both 
+        femaleTotal += female 
+        maleTotal += male
+        bothTotal += both
+        row_count += 1 
 
-        femaleAv += female
-        maleAv += male
-        bothAv += both 
+    femaleAv = femaleTotal / row_count
+    maleAv = maleTotal / row_count
+    bothAv = bothTotal / row_count
+
     return (femaleData, maleData, bothData, femaleAv, maleAv, bothAv)
 
     
