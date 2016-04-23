@@ -67,7 +67,7 @@
       <div class="row featurette">
         <div class="col-md-6">
           <h4 class="featurette-heading"> UCI Heart Disease Dataset </h4>
-          <p class="lead" font size = "6">The dataset used in our project was aggregated from four different datasets collected from Hungary, Switzerland, and the US. Percentage of aggregated data obtained from each source is shown in the adjacent pie chart. The data itself was available in a text file with each row broken up across several lines. Using a parser script we wrote in python, we aggregated data from these sources and stored it in csv format. After aggregation, we had 899 records with 76 attributes. However, after initial exploration, we got rid of 26 variables which contained the same value across all records of the dataset.<br> </p>
+          <p class="lead" font size = "6">The dataset used in our project was aggregated from four different datasets collected from Hungary, Switzerland, and the US. Percentage of aggregated data obtained from each source is shown in the adjacent pie chart. The data itself was available in a text file with each row broken up across several lines. Using a parser script we wrote in python, we aggregated data from these sources and stored it in csv format. After aggregation, we had 899 records with 76 attributes. However, after initial exploration, we got rid of 26 variables which contained the same value across all records of the dataset. These variables included ssn, name, etc. pertaining to individual characteristics of the corresponding patients, which were anonymized by adding dummy values in their place.<br> </p>
         </div>
         <div class="col-md-6">
           <!--- <img class="featurette-image img-fluid center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> --->
@@ -106,8 +106,15 @@
 	<div class="row featurette">
           <h4 class="featurette-heading">Missing Values Imputation</h4>
           <p class="lead">We analyzed the pattern of missing values in this dataset to verify if they are missing at random. <br>
-		  One pattern that we found is that values from variables denoting if <b>calcium blocker</b>, <b>nitrates</b>, <b>beta blocker</b>, <b>digitalis</b>, and <b>diuretic</b> were used during exercise were missing together for most part. Particularly, there were 50 rows for which these features along with <b>Resting Blood Pressure</b>, <b>Resting Heart Rate</b>, <b>Maximum Heart Rate</b>, <b>Exercise Duration</b>, and <b>Exercise induced Angina</b> were all missing together. These seemed to be bad sample data points since its very unlikely for a patient suspected for heart disease will almost always have these values recorded. We decided to remove these points from our dataset in order to avoid adding bias to the data through imputation.</p> <br>
+		  One pattern that we found is that values from variables denoting if <b>calcium blocker</b>, <b>nitrates</b>, <b>beta blocker</b>, <b>digitalis</b>, and <b>diuretic</b> were used during exercise were missing together for most part. Particularly, there were 50 rows for which these features along with <b>Resting Blood Pressure</b>, <b>Resting Heart Rate</b>, <b>Maximum Heart Rate</b>, <b>Exercise Duration</b>, and <b>Exercise induced Angina</b> were all missing together. These seemed to be bad sample data points since its very unlikely for a patient suspected for heart disease will almost always have these values recorded. We decided to remove these points from our dataset in order to avoid adding bias to the data through imputation. <br>
+		  We then imputed missing values for each individual variable, using the following criteria: <br>
+		  1. Continuous variables - using standard deviation since it introduced minimum bias in the data <br>
+		  2. Categorical variables - using most commonly observed value <br>
+		  <br>
+		  Given below is a sample of the dataset we used for predicting whether a person is at risk of suffering from heart disease. This dataset consists of 849 rows and 20 columns, including class label and feature corresponding to source of data (Cleveland, California, etc.) <br>
+		  Insert table here.
 		  
+		  </p>
 		  </div>	
 		  
       </div>
