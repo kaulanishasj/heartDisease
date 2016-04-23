@@ -99,12 +99,10 @@ def get_data(data):
 @app.route('/')
 def index():
     template = JINJA_ENVIRONMENT.get_template('templates/home.html')
-    data = get_all_data()
-    (femaleData, maleData, bothData, femaleAv, maleAv, bothAv) = get_data(data)
-
-    variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
-    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv}
-    return template.render(variables)
+    image1 = url_for('static', filename='images/image1.jpeg')
+    image2 = url_for('static', filename='images/image2.jpg')
+    image3 = url_for('static', filename='images/image3.jpg')
+    return template.render(image1 = image1, image2 = image2, image3 = image3)
 
 
 @app.route('/about')
@@ -130,13 +128,20 @@ def visual():
 
     rows = list(chunks(i, 5))
     
-    translators = json.dumps({"age" : "AGE", "restecg" : "RestFUL"})
+    # translators : json.dumps({'age' : "Age", 'sex': "Sex", 'cp' : "Chest Pain Type", 'trestbps':"Resting Blood Pressure",
+    #                           'chol' : "Serum Cholestoral" , 'fbs' : "Fasting Blood Sugar", 'restecg' : "Resting Electrocardiographic Result", 
+    #                           'thalach' : "Maximum Heart Rate Achieved ", 'exang' : "Exercise Induced Angina", 'oldpeak': "ST Depression Induced By Exercise relative to rest", 
+    #                           'htn' : "", 'dig' : "", 'prop' : "", 'nitr' : "", 'diuretic' : "", 'thaldur' : "Duration of Exercise Test(mins)" , 
+    #                           'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", , 'num' : "Diagnosed with Heart Disease"     })
 
+  
 
     variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
     'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows, 'translators':translators}
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
+
+
 
 
 
