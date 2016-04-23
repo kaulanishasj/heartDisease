@@ -128,13 +128,20 @@ def visual():
 
     rows = list(chunks(i, 5))
     
-    translators = json.dumps({"age" : "AGE", "restecg" : "RestFUL"})
+    # translators : json.dumps({'age' : "Age", 'sex': "Sex", 'cp' : "Chest Pain Type", 'trestbps':"Resting Blood Pressure",
+    #                           'chol' : "Serum Cholestoral" , 'fbs' : "Fasting Blood Sugar", 'restecg' : "Resting Electrocardiographic Result", 
+    #                           'thalach' : "Maximum Heart Rate Achieved ", 'exang' : "Exercise Induced Angina", 'oldpeak': "ST Depression Induced By Exercise relative to rest", 
+    #                           'htn' : "", 'dig' : "", 'prop' : "", 'nitr' : "", 'diuretic' : "", 'thaldur' : "Duration of Exercise Test(mins)" , 
+    #                           'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", , 'num' : "Diagnosed with Heart Disease"     })
 
+  
 
     variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
     'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows, 'translators':translators}
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
+
+
 
 
 

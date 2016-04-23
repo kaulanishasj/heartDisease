@@ -27,9 +27,6 @@
           <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="/source_code">SourceCode</a>
         </li>
         <li class="nav-item">
@@ -42,7 +39,7 @@
             </button>
             <ul class="dropdown-menu">
               <li style="background-color: #b91773"><a href="/visual">Data Exploration</a></li>
-              <li><a href="/quality">Data Quality</a></li>
+              <li><a href="/quality">Data Quality & About</a></li>
             </ul>
          </div>
         </li>
@@ -117,7 +114,7 @@
           <div class="checkbox" style="margin: 41px 11px 34px 84px;font-size: 30px;">
               {% for r in row %}
                   <label style="margin: 0px 35px 0px 0px;">
-                    <input type="checkbox" value={{r}} name="type" /> {{r}}
+                    <input type="checkbox" value={{r}} name="type"/> {{r}}
                   </label>
               {% endfor %}
           </div>
@@ -312,16 +309,6 @@
             .append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     }
 
-   
-    // function translateColumn(){
-    //   console.log("************");
-    //   console.log({{translators}});
-    //     var tim = JSON.parse({{translators}});
-
-        
-    // }
-
-
   var drawn = false;
 
   function drawParallelCoordinate(){
@@ -331,12 +318,7 @@
         $("svg")[$("svg").length - 1].remove();
         addVars();
     }
-    
-
-     console.log("Being plotted");
-     console.log(selectedDimensions);
-     console.log('{{rows}}');
-
+  
     d3.csv("data/all_clean_data.csv", function(error, cars) {
 
     // Extract the list of dimensions and create a scale for each.
@@ -462,7 +444,6 @@
       });
     }
     addVars();
-    // translateColumn();
     drawParallelCoordinate();
     drawn = true;
 
