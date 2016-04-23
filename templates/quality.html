@@ -96,8 +96,8 @@
           <h4 class="featurette-heading">Outlier Analysis</h4>
           <p class="lead"> We analyzed 20 variables to test for outliers. To start the analysis we made a box plot for each variable and calculated a
               a range of the values. Then we researched and collected the normal ranges for the variables from the internet to get a sense of the
-              acceptable values. If the observed values were too off then we just deleted the records.
-          As we can see from the box plots below, resting BP and resting heart rate seemed to have high number of outliers. </p>
+              acceptable values.We observed records that had 0 resting bp.As we can see from the box plots below, resting BP and resting heart rate seemed to have high number of outliers.It is highly unlikely that a person will have that value so we replaced the outlier with mean.Similarly for resting heart rate, some records had values less than 20 while the normal range allows for values between 40-120. Hence, once again we replaced the outliers with the mean.
+              </p>
          <p><img src="{{datapipeproj1}}" height="300" width="500">
             <img src="{{datapipeproj2}}" height="300" width="500"></p></p>
 		  </div>
