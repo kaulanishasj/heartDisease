@@ -99,10 +99,12 @@ def get_data(data):
 @app.route('/')
 def index():
     template = JINJA_ENVIRONMENT.get_template('templates/home.html')
-    image1 = url_for('static', filename='images/image1.jpeg')
-    image2 = url_for('static', filename='images/image2.jpg')
-    image3 = url_for('static', filename='images/image3.jpg')
-    return template.render(image1 = image1, image2 = image2, image3 = image3)
+    data = get_all_data()
+    (femaleData, maleData, bothData, femaleAv, maleAv, bothAv) = get_data(data)
+
+    variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
+    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv}
+    return template.render(variables)
 
 
 @app.route('/about')
