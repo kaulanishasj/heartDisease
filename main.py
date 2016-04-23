@@ -68,6 +68,9 @@ def get_data(data):
     femaleData = {}
     maleData = {}
     bothData = {}
+    femaleAv = 0
+    maleAv = 0
+    bothAv = 0
     for row in data:
         state = row[0]
         male = float(row[1])
@@ -76,7 +79,11 @@ def get_data(data):
         femaleData[state] = female
         maleData[state] = male
         bothData[state] = both 
-    return (femaleData, maleData, bothData)
+
+        femaleAv += female
+        maleAv += male
+        bothAv += both 
+    return (femaleData, maleData, bothData, femaleAv, maleAv, bothAv)
 
     
 @app.route('/')
@@ -102,7 +109,7 @@ def chunks(l, n):
 @app.route('/visual')
 def visual():
     data = get_all_data()
-    (femaleData, maleData, bothData) = get_data(data)
+    (femaleData, maleData, bothData, femaleAv, maleAv, bothAv) = get_data(data)
     
     with open("data/all_clean_data.csv", "rb") as f:
         reader = csv.reader(f)
@@ -114,9 +121,12 @@ def visual():
     translators = json.dumps({"age" : "AGE", "restecg" : "RestFUL"})
 
 
-    variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 'rows':rows, 'translators':translators}
+    variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
+    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows, 'translators':translators}
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
+
+
 
 @app.route('/data_structure')
 def data_storage():

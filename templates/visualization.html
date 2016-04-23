@@ -148,6 +148,9 @@
                 var stateData = {{both|safe}};
                 var femaleData = {{female|safe}}
                 var maleData = {{male|safe}}
+                var femaleAv = {{femaleAv|safe}} 
+                var maleAv = {{maleAv|safe}}
+                var bothAv = {{bothAv|safe}}
 
                 var states = {
                         'AK': 'Alaska',
@@ -216,7 +219,7 @@
                 "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
                     .forEach(function(d){ 
                         var count = (stateData[states[d]]);
-                        sampleData[d]={count:count, color:d3.interpolate("#ffffcc", "#800026")(count/100)}; 
+                        sampleData[d]={count:count, color:d3.interpolate("#ffffcc", "#800026")(count/bothAv)}; 
                     });
                 // data in format of: {StateName: {low, high, average, color}, StateName: {low, high, average, color}}
                 
@@ -230,7 +233,7 @@
                 "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
                     .forEach(function(d){ 
                         var count = (femaleData[states[d]]);
-                        femaleSample[d]={count:count, color:d3.interpolate("#ffffcc", "#800026")(count/100)}; 
+                        femaleSample[d]={count:count, color:d3.interpolate("#ffffcc", "#800026")(count/femaleAv)}; 
                     });
 
                 var maleSample = {};
@@ -241,7 +244,7 @@
                 "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
                     .forEach(function(d){ 
                         var count = (maleData[states[d]]);
-                        maleSample[d]={count:count, color:d3.interpolate("#ffffcc", "#800026")(count/100)}; 
+                        maleSample[d]={count:count, color:d3.interpolate("#ffffcc", "#800026")(count/maleAv)}; 
                     });
 
                 uStates.draw("#statesvg", sampleData, tooltipHtml);
