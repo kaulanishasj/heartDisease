@@ -156,9 +156,9 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <button id="female" type="button" class="btn btn-secondary">Female</button>
-          <button id="male" type="button" class="btn btn-secondary">Male</button>
-          <button id="both" type="button" class="btn btn-secondary">Both</button>
+          <button id="female" type="button" class="btn danger-secondary">Female</button>
+          <button id="male" type="button" class="btn danger-secondary">Male</button>
+          <button id="both" type="button" class="btn danger-secondary">Both</button>
         </div>
       </div>
       <div class="row">
@@ -210,8 +210,12 @@
               function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
                 console.log(d)
                 return "<h4>"+n+"</h4><table>"+
-                  "<tr><td>Death Count: </td><td>"+" "+d.count+"</td></tr>"+
+                  "<tr><td>Death Count: </td><td>"+" "+d.count+"</td></tr>"+"female"+d.femCount+
                   "</table>";
+              }
+
+              //create a svg in svg thing
+              function tool(n, d){
               }
 
               function statetooltipHtml(n, d) {
@@ -310,8 +314,9 @@
                 "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
                 "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
                     .forEach(function(d){ 
+                        var fem = (femaleData[states[d]]);
                         var count = (stateData[states[d]]);
-                        sampleData[d]={count:count, color:d3.interpolate("#ffffcc", "#800026")(count/bothAv)}; 
+                        sampleData[d]={count:count, femCount:fem, color:d3.interpolate("#ffffcc", "#800026")(count/bothAv)}; 
                     });
                 // data in format of: {StateName: {low, high, average, color}, StateName: {low, high, average, color}}
                 
