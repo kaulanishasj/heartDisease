@@ -55,6 +55,21 @@ def get_all_data():
     except IOError:
         logging.info("failed to load file")        
 
+#load data for % of americans with heart disease
+def get_percent_data():
+    try:
+        with open("data/hasHeartDisease.csv", 'rb') as f:
+            read = csv.reader(f)
+            response = []
+            for row in read:
+                #logging.info(row)
+                response.append(row)
+        #first 4 rows are meta-data
+        return response[4:]
+
+    except IOError:
+        logging.info("failed to load file")    
+
 def dataDict(d):
     data = {}
     for row in d:
@@ -147,9 +162,11 @@ def index():
     template = JINJA_ENVIRONMENT.get_template('templates/home.html')
     data = get_all_data()
     (femaleData, maleData, bothData, femaleAv, maleAv, bothAv) = get_data(data)
+    percentData = get_percent_data()
+    logging.info(percentData)
 
     variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
-    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv}
+    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv, 'percentData': percentData}
     return template.render(variables)
 
 
@@ -172,16 +189,17 @@ def visual():
 
     rows = list(chunks(i, 5))
     
-    translators : json.dumps({'age' : "Age", 'sex': "Sex", 'cp' : "Chest Pain Type", 'trestbps':"Resting Blood Pressure",
-                              'chol' : "Serum Cholestoral" , 'fbs' : "Fasting Blood Sugar", 'restecg' : "Resting Electrocardiographic Result", 
-                              'thalach' : "Maximum Heart Rate Achieved ", 'exang' : "Exercise Induced Angina", 'oldpeak': "ST Depression Induced By Exercise relative to rest", 
-                              'htn' : "", 'dig' : "", 'prop' : "", 'nitr' : "", 'diuretic' : "", 'thaldur' : "Duration of Exercise Test(mins)" , 
-                              'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", , 'num' : "Diagnosed with Heart Disease"     })
+    # translators : json.dumps({'age' : "Age", 'sex': "Sex", 'cp' : "Chest Pain Type", 'trestbps':"Resting Blood Pressure",
+    #                           'chol' : "Serum Cholestoral" , 'fbs' : "Fasting Blood Sugar", 'restecg' : "Resting Electrocardiographic Result", 
+    #                           'thalach' : "Maximum Heart Rate Achieved ", 'exang' : "Exercise Induced Angina", 'oldpeak': "ST Depression Induced By Exercise relative to rest", 
+    #                           'htn' : "", 'dig' : "", 'prop' : "", 'nitr' : "", 'diuretic' : "", 'thaldur' : "Duration of Exercise Test(mins)" , 
+    #                           'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", , 'num' : "Diagnosed with Heart Disease"     })
 
   
-
     variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
-    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows, 'translators':translators}
+    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows}
+    # variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
+    # 'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows, 'translators':translators}
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
 
