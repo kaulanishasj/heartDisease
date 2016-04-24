@@ -55,6 +55,21 @@ def get_all_data():
     except IOError:
         logging.info("failed to load file")        
 
+#load data for % of americans with heart disease
+def get_percent_data():
+    try:
+        with open("data/hasHeartDisease.csv", 'rb') as f:
+            read = csv.reader(f)
+            response = []
+            for row in read:
+                #logging.info(row)
+                response.append(row)
+        #first 4 rows are meta-data
+        return response[4:]
+
+    except IOError:
+        logging.info("failed to load file")    
+
 def dataDict(d):
     data = {}
     for row in d:
@@ -63,6 +78,52 @@ def dataDict(d):
         data[state] = count
     return data
 
+    
+def hd_predict(cp = 1, exang = 0, oldpeak = 0, chol = 200, sex = 0, trestbps = 120, thalach = 110, age = 50):
+    result = False
+    if cp == 1 or cp == 2 or cp == 3:
+        if chol >= 50:
+            if age < 56:
+                result = False
+            else:
+                if sex == 0:
+                    result = False
+                else:
+                    if thalach >= 136:
+                        if chol < 250:
+                            result = False
+                        else:
+                            result = True
+                    else:
+                        result = True
+        else:
+            result = True
+    else:
+        if exang == 0:
+            if oldpeak < 1.7:
+                if chol >= 56:
+                    if sex == 0:
+                        result = False
+                    else:
+                        if trestbps >= 128:
+                            if thalach >= 126:
+                                result = False
+                            else:
+                                result = True
+                        else:
+                            result = True
+                else:
+                    result = True
+            else:
+                result = True
+        else:
+            result = True
+    
+    return result
+    
+    
+    
+    
 def get_data(data):
     #state, male, female
     femaleData = {}
@@ -99,16 +160,16 @@ def get_data(data):
 @app.route('/')
 def index():
     template = JINJA_ENVIRONMENT.get_template('templates/home.html')
-    image1 = url_for('static', filename='images/image1.jpeg')
-    image2 = url_for('static', filename='images/image2.jpg')
-    image3 = url_for('static', filename='images/image3.jpg')
-    return template.render(image1 = image1, image2 = image2, image3 = image3)
+    data = get_all_data()
+    (femaleData, maleData, bothData, femaleAv, maleAv, bothAv) = get_data(data)
+    percentData = get_percent_data()
+    logging.info(percentData)
+
+    variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
+    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv, 'percentData': percentData}
+    return template.render(variables)
 
 
-@app.route('/about')
-def about():
-    template = JINJA_ENVIRONMENT.get_template('templates/about.html')
-    return template.render()
 
 
 def chunks(l, n):
@@ -138,15 +199,24 @@ def visual():
                               'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", 'num' : "Diagnosed with Heart Disease"}
 
 
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 8b2504c56caa2a790cda67bdd1a935595e17c8e6
     variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
-    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows, 'translators':translators}
+    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows}
+    # variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
+    # 'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows, 'translators':translators}
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
 
 
 
-
+@app.route('/prediction')
+def prediction():
+    template = JINJA_ENVIRONMENT.get_template('templates/prediction.html')
+    return template.render()
 
 @app.route('/data_structure')
 def data_storage():
@@ -179,28 +249,22 @@ def form():
 @app.route('/try1', methods=['POST'])
 def try1():
     template = JINJA_ENVIRONMENT.get_template('templates/predict.html')
-    firstname = request.form['fname']
-    lastname = request.form['lname']
+    
     age = request.form['age']
     sex = request.form['sex']
     chestpain = request.form['chestpain']
     bp = request.form['bp']
     chol = request.form['chol']
-    fbsugar = request.form['fbsugar']
-    ecg = request.form['ecg']
     thalach = request.form['thalach']
     excercise = request.form['excercise']
     oldpeak = request.form['oldpeak']
-    slope = request.form['slope']
-    ca = request.form['ca']
-    thal = request.form['thal']
-    return template.render(firstname=firstname, lastname=lastname, chestpain = chestpain, age = age, sex= sex, bp = bp, chol = chol, fbsugar =fbsugar, ecg = ecg, thalach = thalach, excercise = excercise, oldpeak = oldpeak, slope = slope
-                           , ca = ca, thal= thal)
-    # return template.render(firstname = firstname,lastname = lastname, age = age,
-    #                        sex = sex, chestpain =
-    #                        ecg=ecg, thalach=thalach,
-    #                        bp = bp, fbsugar = fbsugar)
-    # slope = slope, thal = thal , excercise=excercise, oldpeak=oldpeak,
+    
+    res = hd_predict(cp = chestpain, exang = excercise, oldpeak = oldpeak, chol = chol, sex = sex, trestbps = bp, thalach = thalach, age = age)
+    
+    return template.render(chestpain = chestpain, age = age, sex= sex, bp = bp, chol = chol,thalach = thalach, excercise = excercise, oldpeak = oldpeak, res = res)
+    
+    
+    
 @app.errorhandler(404)
 def page_not_found(e):
     """Return a custom 404 error."""

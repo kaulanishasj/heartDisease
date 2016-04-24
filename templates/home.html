@@ -29,6 +29,9 @@
           <a class="nav-link" href="/data_structure">Predictive Model</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/prediction">Heart Disease Risk</a>
+        </li>
+        <li class="nav-item">
          <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
                     aria-expanded="false"> Visualizations
@@ -58,7 +61,7 @@
             <div class="carousel-caption">
               <h2>Heart Disease in Women</h2>
               <p>Heart disease is the number one cause of death for both men and women in the United States. Cancer and stroke round out the top three.</p>
-              <p><img src="{{image1}}" height="200" width="200"></br></p>
+              <p><img src="static/images/image1.jpeg" height="200" width="200"></br></p>
             </div>
           </div>
         </div>
@@ -70,7 +73,7 @@
               <p>Cardiovascular disease is the leading global cause of death, accounting for 17.3
                  million deaths per year, a number that is expected to grow to more than 23.6
                  million by 2030. </p>
-                 <p><img src="{{image2}}" height="200" width="200"></br></p>
+                 <p><img src="static/images/image2.jpg" height="200" width="200"></br></p>
             </div>
           </div>
         </div>
@@ -81,7 +84,7 @@
               <h1>Costs of Heart Diseases</h1>
               <p>Direct and indirect costs of cardiovascular diseases and stroke total more than
                  $320.1 billion. That includes health expenditures and lost productivity. </p>
-                 <p><img src="{{image3}}" height="200" width="200"></br></p>
+                 <p><img src="static/images/image3.jpg" height="200" width="200"></br></p>
             </div>
           </div>
         </div>
@@ -105,7 +108,7 @@
       <div class="row">
         <div class="col-lg-4">
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Characterize</h2>
+          <h2>Alert</h2>
           <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
@@ -115,11 +118,67 @@
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Predict</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p>Write about: Why did you choose this dataset? how will this final application help the end user? what elements of the data pipeline have you come across during this process? what kind of work was done on this dataset before? Why did it not work? what were its drawback? </p>
+          <h2>Prevent</h2>
+          <p>Heart disease can be prevented. </p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
+
+
+    <!--WHAT IS HEART DISEASE -->
+    <div>
+    </div>
+
+
+    <!--ADULTS WITH HEART DISEASE -->
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Adults with Heart Disease By State</h1>
+        <a href="http://kff.org/other/state-indicator/percent-of-adults-with-cardiovascular-disease/#table">data source</a>
+
+      </div>
+    <div class="row">
+      <div id="statetooltip"></div>
+      <svg width = "960" height ="600" id="diagnosed"></svg>
+    </div>
+
+
+    <!--MAP VIZ -->
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Number of Heart Disease Deaths per 100,000 Population</h1>
+          <p>With the following maps, you can explore how many heart disease deaths 
+          occur by gender in your own state and compare it to others. Are you living
+          in a state where high rates of heart disease? These visuals should give you 
+          a sense of the general rates of heart disease mortality in the US. 
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <button id="female" type="button" class="btn danger-secondary">Female</button>
+          <button id="male" type="button" class="btn danger-secondary">Male</button>
+          <button id="both" type="button" class="btn danger-secondary">Both</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">          
+          <div class="container">
+            <div id="tooltip"></div>
+            <svg width="960" height="600" id="statesvg"></svg>
+            <svg width="960" height="600" id="femaleStates"></svg>
+            <svg width="960" height="600" id="maleStates"></svg>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <div class="jumbotron">
+          <h1><i>What is my risk of having heart disease?</i></h>
+          <p>Using our predictive model, you can receive a personalized assesment 
+          your hear disease risk.</p>
+          <a href="/prediction" class="btn btn-secondary">Get Started Now</a>
+      </div>
 
       <!-- FOOTER -->
       <footer>
@@ -137,5 +196,188 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="js/holder.min.js"></script>
+
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/uStates.js"></script> <!-- creates uStates. -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="d3/d3.v3.js"></script>
+
+    <script>
+            // ----------- EVERY CHART NEEDS DATA -------------- 
+              function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
+                console.log(d)
+                return "<h4>"+n+"</h4><table>"+
+                  "<tr><td>Death Count: </td><td>"+" "+d.count+"</td></tr>"+"female"+d.femCount+
+                  "</table>";
+              }
+
+              //create a svg in svg thing
+              function tool(n, d){
+              }
+
+              function statetooltipHtml(n, d) {
+                return "<h4>"+n+"</h4><table>"+
+                  "<tr><td>Percent of Adults: </td><td>"+d.percent+"</td></tr>"+
+                  "</table>";
+              }
+                
+                
+                //Data Format?
+                var stateData = {{both|safe}};
+                var femaleData = {{female|safe}}
+                var maleData = {{male|safe}}
+                var femaleAv = {{femaleAv|safe}} 
+                var maleAv = {{maleAv|safe}}
+                var bothAv = {{bothAv|safe}}
+
+                var states = {
+                        'AK': 'Alaska',
+                        'AL': 'Alabama',
+                        'AR': 'Arkansas',
+                        'AS': 'American Samoa',
+                        'AZ': 'Arizona',
+                        'CA': 'California',
+                        'CO': 'Colorado',
+                        'CT': 'Connecticut',
+                        'DC': 'District of Columbia',
+                        'DE': 'Delaware',
+                        'FL': 'Florida',
+                        'GA': 'Georgia',
+                        'GU': 'Guam',
+                        'HI': 'Hawaii',
+                        'IA': 'Iowa',
+                        'ID': 'Idaho',
+                        'IL': 'Illinois',
+                        'IN': 'Indiana',
+                        'KS': 'Kansas',
+                        'KY': 'Kentucky',
+                        'LS': 'Louisiana',
+                        'MA': 'Massachusetts',
+                        'MD': 'Maryland',
+                        'ME': 'Maine',
+                        'MI': 'Michigan',
+                        'MN': 'Minnesota',
+                        'MO': 'Missouri',
+                        'MP': 'Northern Mariana Islands',
+                        'MS': 'Mississippi',
+                        'MT': 'Montana',
+                        'NA': 'National',
+                        'NC': 'North Carolina',
+                        'ND': 'North Dakota',
+                        'NE': 'Nebraska',
+                        'NH': 'New Hampshire',
+                        'NJ': 'New Jersey',
+                        'NM': 'New Mexico',
+                        'NV': 'Nevada',
+                        'NY': 'New York',
+                        'OH': 'Ohio',
+                        'OK': 'Oklahoma',
+                        'OR': 'Oregon',
+                        'PA': 'Pennsylvania',
+                        'PR': 'Puerto Rico',
+                        'RI': 'Rhode Island',
+                        'SC': 'South Carolina',
+                        'SD': 'South Dakota',
+                        'TN': 'Tennessee',
+                        'TX': 'Texas',
+                        'UT': 'Utah',
+                        'VA': 'Virginia',
+                        'VI': 'Virgin Islands',
+                        'VT': 'Vermont',
+                        'WA': 'Washington',
+                        'WI': 'Wisconsin',
+                        'WV': 'West Virginia',
+                        'WY': 'Wyoming'
+                    }
+
+
+                var percentData = {{percentData|safe}}
+
+                var percentSample = {};
+                ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+                "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+                "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+                "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+                "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+                    .forEach(function(d){ 
+                        var percent = 100*(percentData[states[d]]);
+                        percentSample[d]={percent:percent, color:d3.interpolate("#ffffcc", "#800026")(percent)}; 
+                    });
+
+                var sampleData ={}; /* Sample random data. */   
+                ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+                "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+                "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+                "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+                "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+                    .forEach(function(d){ 
+                        var fem = (femaleData[states[d]]);
+                        var count = (stateData[states[d]]);
+                        sampleData[d]={count:count, femCount:fem, color:d3.interpolate("#ffffcc", "#800026")(count/bothAv)}; 
+                    });
+                // data in format of: {StateName: {low, high, average, color}, StateName: {low, high, average, color}}
+                
+                /* draw states on id #statesvg */   
+
+                var femaleSample = {};
+                ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+                "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+                "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+                "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+                "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+                    .forEach(function(d){ 
+                        var count = (femaleData[states[d]]);
+                        femaleSample[d]={count:count, color:d3.interpolate("#ffffcc", "#800026")(count/femaleAv)}; 
+                    });
+
+                var maleSample = {};
+                ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+                "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+                "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+                "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+                "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+                    .forEach(function(d){ 
+                        var count = (maleData[states[d]]);
+                        maleSample[d]={count:count, color:d3.interpolate("#ffffcc", "#800026")(count/maleAv)}; 
+                    });
+
+                uStates.draw("#statesvg", sampleData, tooltipHtml);
+                uStates.draw("#femaleStates", femaleSample, tooltipHtml);
+                uStates.draw("#maleStates", maleSample, tooltipHtml);
+
+                uStates.draw("#diagnosed", percentSample, statetooltipHtml);
+
+
+
+
+            //AJAX SUPPORT
+            $(document).ready(function(){
+                $("#femaleStates").hide();
+                $("#maleStates").hide();
+                //Show only Female States
+                $("#female").click(function(){
+                    $("#statesvg").hide();
+                    $("#maleStates").hide();
+                    $("#femaleStates").show();
+                });
+                //Show both gender states
+                $("#both").click(function(){
+                    $("#statesvg").show();
+                    $("#femaleStates").hide();
+                    $("#maleStates").hide();
+                });
+                //Show only male states
+                $("#male").click(function(){
+                    $("#statesvg").hide();
+                    $("#femaleStates").hide();
+                    $("#maleStates").show();
+                });
+            });
+    </script>
+
+
   </body>
 </html>

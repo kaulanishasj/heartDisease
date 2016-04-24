@@ -42,54 +42,41 @@
       </ul>
     </nav>
     <div class="container marketing">
-      <h3>
-        <span class="text-muted">Write about: Where did you get the data from? how reliable is it? How did you clean the  data? what techniques did you use? How did you impute the null values? how did the variance change? how many null values were there in the dataset? what is the size of the dataset? What are the advantages of using the structured datase? Could we have used semi-unstructured dataset? maybe twitter dataset? for heart disease? Talk about the data model? what are the integrity constraints?  How did you combine the differents datasets - using R? DO you see any other structures that are not depicted in the structure? (clusters?), is the data continuous or discrete? nominal, ordinal, interval , ratio, ? should we transform the data in anyway? or is it already normal? did we do any Value Mapping (converting ordinal values to numbers?) did we do any discretization? ( numbers to ordinal?) overfitting and underfitting? talk about the predicting model? how does cross validation avoid over/underfitting, what size is our sample from the total population that is diagnosed with heart diseases?
-
-
+      <h4 class="featurette-heading">Data used for prediction</h4>
+	  <p class="lead"> Following is the data obtained after undergoing all the cleaning processes listed in the <b>Data Quality</b> page. <br>
+	  It consists of 849 records and 20 variables with the target variable we are trying to predict being <b>At risk?</b> <br>
+	  Binary variables present in the data have a '?' in the end and have value of 1 if true and 0 if false.
+	  <br>
+		<!---
+		Write about: Where did you get the data from? how reliable is it? How did you clean the  data? what techniques did you use? How did you impute the null values? how did the variance change? how many null values were there in the dataset? what is the size of the dataset? What are the advantages of using the structured datase? Could we have used semi-unstructured dataset? maybe twitter dataset? for heart disease? Talk about the data model? what are the integrity constraints?  How did you combine the differents datasets - using R? DO you see any other structures that are not depicted in the structure? (clusters?), is the data continuous or discrete? nominal, ordinal, interval , ratio, ? should we transform the data in anyway? or is it already normal? did we do any Value Mapping (converting ordinal values to numbers?) did we do any discretization? ( numbers to ordinal?) overfitting and underfitting? talk about the predicting model? how does cross validation avoid over/underfitting, what size is our sample from the total population that is diagnosed with heart diseases?
 
         Is the data normal?
-
-      </span></h3>
+		--->
+		<iframe width="1200" height="300" scrolling="yes" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=GVIZ&amp;t=TABLE&amp;q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11%2C+col12%2C+col13%2C+col14%2C+col15%2C+col16%2C+col17%2C+col18%2C+col19+from+1XouYaDiGXVlYdtO9l3JE1G0eN063Z7Ob3ETneLFO&amp;containerId=googft-gviz-canvas"></iframe>
+		
+      
 
       <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
 
       <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-fluid center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
+          <h3 class="featurette-heading">Training the Model</h3>
+          <p class="lead">We split the data in 90/10 ratio, where 90% of the dataset was used for training and 10% used for testing. We decided to use <b>decision trees</b> as our model as it would be easy to interpret the results obtained using prediction. Given below is the decision tree formed after training our model. In order to prevent overfitting of training data, we pruned the tree if further splitting on a node does not reduce training error by more than a factor of 0.01</p>
+		<p><img src= "static/images/Decision_Tree_viz.png"></p>
       </div>
 
       <hr class="featurette-divider">
 
       <div class="row featurette">
-        <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <div class="col-md-6">
+          <h2 class="featurette-heading">Model Tuning</h2>
+          <p class="lead">We extracted the output from decision trees in the form of probability of a data point being at risk of heart disease. Using these probabilities we performed ROC analysis looking at <b>True Positive</b> and <b>False Positive Rates</b>. Our goal was to increase True Positive Rate, i.e., probability of correctly classifying a person at risk, while keeping False Positive Rate, i.e., falsely classifying a person as at risk, in check. This is done to get high performance while reducing false alarms raised by the system.<br> We were able to achieve optimal values for a cutoff probability of 0.2. If the probability of being at risk is > 0.2, we classify that data point as being at risk. The accuracy obtained at this point is 77.6%, while True Positive Rate = 88.4% and False Positive Rate = 33.3%</p>
         </div>
-        <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-fluid center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-fluid center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <div class="col-md-6">
+        <p><img src= "static/images/roc_plot.png" height = "400" width = "600"></br></p>
         </div>
       </div>
-
-      <hr class="featurette-divider">
 
       <!-- /END THE FEATURETTES -->
 
