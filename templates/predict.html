@@ -2,25 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>fdsfdfdf</title>
+    <title>Prediction</title>
 </head>
 <body>
 <h1>DATA</h1>
     <h1>{{ bp}}</h1>
-    <h1> {{ firstname }}</h1>
-     <h1> {{ lastname }} </h1>
     <h1> {{ age }} </h1>
     <h1>   {{ sex }} </h1>
     <h1>  {{ chestpain }} </h1>
     <h1>  {{ chol }} </h1>
-       <h1>  {{ fbsugar }} </h1>
-      <h1>  {{ ecg  }}  </h1>
       <h1>  {{ thalach }} </h1>
        <h1> {{ excercise }} </h1>
         <h1> {{ oldpeak }} </h1>
-        <h1> {{ slope }} </h1>
-         <h1> {{ ca }} </h1>
-      <h1> {{ thal  }}</h1>
+        
+          {% if res  == 'True' %} 
+            <p>You are at risk of a heart attack</p>
+          
+            {% else %}
+            
+                 <p>You are not at risk of a heart attack </p>
+                 {% endif %}
+                 <h3> done </h3>
+               
+         
+      
+
 
 </body>
 </html>

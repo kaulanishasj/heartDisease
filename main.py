@@ -103,7 +103,6 @@ def hd_predict(cp = 1, exang = 0, oldpeak = 0, chol = 200, sex = 0, trestbps = 1
                 result = True
         else:
             result = True
-    
     return result
     
     
@@ -232,11 +231,11 @@ def try1():
     chol = request.form['chol']
     thalach = request.form['thalach']
     excercise = request.form['excercise']
-    oldpeak = request.form['oldpeak']
-    
+    oldpeak = request.form['oldpeak']    
     res = hd_predict(cp = chestpain, exang = excercise, oldpeak = oldpeak, chol = chol, sex = sex, trestbps = bp, thalach = thalach, age = age)
-    
-    return template.render(chestpain = chestpain, age = age, sex= sex, bp = bp, chol = chol,thalach = thalach, excercise = excercise, oldpeak = oldpeak, res = res)
+    print(res)
+    return template.render(chestpain = chestpain, age = age, sex = sex, bp = bp, chol = chol,thalach = thalach, excercise = excercise, oldpeak = oldpeak, 
+    res = res)
     
     
     
