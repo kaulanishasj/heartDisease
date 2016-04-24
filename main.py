@@ -107,10 +107,6 @@ def index():
     return template.render(variables)
 
 
-@app.route('/about')
-def about():
-    template = JINJA_ENVIRONMENT.get_template('templates/about.html')
-    return template.render()
 
 
 def chunks(l, n):
@@ -130,11 +126,11 @@ def visual():
 
     rows = list(chunks(i, 5))
     
-    # translators : json.dumps({'age' : "Age", 'sex': "Sex", 'cp' : "Chest Pain Type", 'trestbps':"Resting Blood Pressure",
-    #                           'chol' : "Serum Cholestoral" , 'fbs' : "Fasting Blood Sugar", 'restecg' : "Resting Electrocardiographic Result", 
-    #                           'thalach' : "Maximum Heart Rate Achieved ", 'exang' : "Exercise Induced Angina", 'oldpeak': "ST Depression Induced By Exercise relative to rest", 
-    #                           'htn' : "", 'dig' : "", 'prop' : "", 'nitr' : "", 'diuretic' : "", 'thaldur' : "Duration of Exercise Test(mins)" , 
-    #                           'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", , 'num' : "Diagnosed with Heart Disease"     })
+    translators : json.dumps({'age' : "Age", 'sex': "Sex", 'cp' : "Chest Pain Type", 'trestbps':"Resting Blood Pressure",
+                              'chol' : "Serum Cholestoral" , 'fbs' : "Fasting Blood Sugar", 'restecg' : "Resting Electrocardiographic Result", 
+                              'thalach' : "Maximum Heart Rate Achieved ", 'exang' : "Exercise Induced Angina", 'oldpeak': "ST Depression Induced By Exercise relative to rest", 
+                              'htn' : "", 'dig' : "", 'prop' : "", 'nitr' : "", 'diuretic' : "", 'thaldur' : "Duration of Exercise Test(mins)" , 
+                              'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", , 'num' : "Diagnosed with Heart Disease"     })
 
   
 
@@ -145,7 +141,10 @@ def visual():
 
 
 
-
+@app.route('/prediction')
+def prediction():
+    template = JINJA_ENVIRONMENT.get_template('templates/prediction.html')
+    return template.render()
 
 @app.route('/data_structure')
 def data_storage():
