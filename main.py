@@ -63,6 +63,52 @@ def dataDict(d):
         data[state] = count
     return data
 
+    
+def hd_predict(cp = 1, exang = 0, oldpeak = 0, chol = 200, sex = 0, trestbps = 120, thalach = 110, age = 50):
+    result = False
+    if cp == 1 or cp == 2 or cp == 3:
+        if chol >= 50:
+            if age < 56:
+                result = False
+            else:
+                if sex == 0:
+                    result = False
+                else:
+                    if thalach >= 136:
+                        if chol < 250:
+                            result = False
+                        else:
+                            result = True
+                    else:
+                        result = True
+        else:
+            result = True
+    else:
+        if exang == 0:
+            if oldpeak < 1.7:
+                if chol >= 56:
+                    if sex == 0:
+                        result = False
+                    else:
+                        if trestbps >= 128:
+                            if thalach >= 126:
+                                result = False
+                            else:
+                                result = True
+                        else:
+                            result = True
+                else:
+                    result = True
+            else:
+                result = True
+        else:
+            result = True
+    
+    return result
+    
+    
+    
+    
 def get_data(data):
     #state, male, female
     femaleData = {}
@@ -177,28 +223,22 @@ def form():
 @app.route('/try1', methods=['POST'])
 def try1():
     template = JINJA_ENVIRONMENT.get_template('templates/predict.html')
-    firstname = request.form['fname']
-    lastname = request.form['lname']
+    
     age = request.form['age']
     sex = request.form['sex']
     chestpain = request.form['chestpain']
     bp = request.form['bp']
     chol = request.form['chol']
-    fbsugar = request.form['fbsugar']
-    ecg = request.form['ecg']
     thalach = request.form['thalach']
     excercise = request.form['excercise']
     oldpeak = request.form['oldpeak']
-    slope = request.form['slope']
-    ca = request.form['ca']
-    thal = request.form['thal']
-    return template.render(firstname=firstname, lastname=lastname, chestpain = chestpain, age = age, sex= sex, bp = bp, chol = chol, fbsugar =fbsugar, ecg = ecg, thalach = thalach, excercise = excercise, oldpeak = oldpeak, slope = slope
-                           , ca = ca, thal= thal)
-    # return template.render(firstname = firstname,lastname = lastname, age = age,
-    #                        sex = sex, chestpain =
-    #                        ecg=ecg, thalach=thalach,
-    #                        bp = bp, fbsugar = fbsugar)
-    # slope = slope, thal = thal , excercise=excercise, oldpeak=oldpeak,
+    
+    res = hd_predict(cp = chestpain, exang = excercise, oldpeak = oldpeak, chol = chol, sex = sex, trestbps = bp, thalach = thalach, age = age)
+    
+    return template.render(chestpain = chestpain, age = age, sex= sex, bp = bp, chol = chol,thalach = thalach, excercise = excercise, oldpeak = oldpeak, res = res)
+    
+    
+    
 @app.errorhandler(404)
 def page_not_found(e):
     """Return a custom 404 error."""
