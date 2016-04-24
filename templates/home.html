@@ -29,6 +29,9 @@
           <a class="nav-link" href="/data_structure">Predictive Model</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/prediction">Heart Disease Risk</a>
+        </li>
+        <li class="nav-item">
          <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
                     aria-expanded="false"> Visualizations
@@ -58,7 +61,7 @@
             <div class="carousel-caption">
               <h2>Heart Disease in Women</h2>
               <p>Heart disease is the number one cause of death for both men and women in the United States. Cancer and stroke round out the top three.</p>
-              <p><img src="static/images/image1.jpg" height="200" width="200"></br></p>
+              <p><img src="static/images/image1.jpeg" height="200" width="200"></br></p>
             </div>
           </div>
         </div>
@@ -105,7 +108,7 @@
       <div class="row">
         <div class="col-lg-4">
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Characterize</h2>
+          <h2>Alert</h2>
           <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
@@ -115,11 +118,29 @@
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Predict</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p>Write about: Why did you choose this dataset? how will this final application help the end user? what elements of the data pipeline have you come across during this process? what kind of work was done on this dataset before? Why did it not work? what were its drawback? </p>
+          <h2>Prevent</h2>
+          <p>Heart disease can be prevented. </p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
+
+
+    <!--WHAT IS HEART DISEASE -->
+    <div>
+    </div>
+
+
+    <!--ADULTS WITH HEART DISEASE -->
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Adults with Heart Disease By State</h1>
+        <a href="http://kff.org/other/state-indicator/percent-of-adults-with-cardiovascular-disease/#table">data source</a>
+
+      </div>
+    <div class="row">
+      <div id="statetooltip"></div>
+      <svg width = "960" height ="600" id="diagnosed"></svg>
+    </div>
+
 
     <!--MAP VIZ -->
       <hr>
@@ -151,6 +172,13 @@
         </div>
       </div>
       <hr>
+
+      <div class="jumbotron">
+          <h1><i>What is my risk of having heart disease?</i></h>
+          <p>Using our predictive model, you can receive a personalized assesment 
+          your hear disease risk.</p>
+          <a href="/prediction" class="btn btn-secondary">Get Started Now</a>
+      </div>
 
       <!-- FOOTER -->
       <footer>
@@ -185,6 +213,13 @@
                   "<tr><td>Death Count: </td><td>"+" "+d.count+"</td></tr>"+
                   "</table>";
               }
+
+              function statetooltipHtml(n, d) {
+                return "<h4>"+n+"</h4><table>"+
+                  "<tr><td>Percent of Adults: </td><td>"+d.percent+"</td></tr>"+
+                  "</table>";
+              }
+                
                 
                 //Data Format?
                 var stateData = {{both|safe}};
@@ -253,6 +288,21 @@
                         'WV': 'West Virginia',
                         'WY': 'Wyoming'
                     }
+
+
+                var percentData = {{percentData|safe}}
+
+                var percentSample = {};
+                ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+                "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
+                "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT", 
+                "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
+                "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
+                    .forEach(function(d){ 
+                        var percent = 100*(percentData[states[d]]);
+                        percentSample[d]={percent:percent, color:d3.interpolate("#ffffcc", "#800026")(percent)}; 
+                    });
+
                 var sampleData ={}; /* Sample random data. */   
                 ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
                 "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH", 
@@ -292,9 +342,12 @@
                 uStates.draw("#statesvg", sampleData, tooltipHtml);
                 uStates.draw("#femaleStates", femaleSample, tooltipHtml);
                 uStates.draw("#maleStates", maleSample, tooltipHtml);
-            </script>
 
-            <script>
+                uStates.draw("#diagnosed", percentSample, statetooltipHtml);
+
+
+
+
             //AJAX SUPPORT
             $(document).ready(function(){
                 $("#femaleStates").hide();
