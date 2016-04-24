@@ -198,16 +198,8 @@ def visual():
                               'thaldur' : "Duration of Exercise Test(mins)" , 
                               'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", 'num' : "Diagnosed with Heart Disease"}
 
-
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 8b2504c56caa2a790cda67bdd1a935595e17c8e6
     variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
-    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows}
-    # variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
-    # 'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows, 'translators':translators}
+    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows, 'translators':translators}
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
 
