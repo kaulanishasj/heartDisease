@@ -108,18 +108,16 @@
       </div>
     </div>
 
-
-    <div class="checkchecks">
-       {% for row in rows %}
-          <div class="checkbox" style="margin: 41px 11px 34px 84px;font-size: 30px;">
-              {% for r in row %}
-                  <label style="margin: 0px 35px 0px 0px;">
-                    <input type="checkbox" value={{r}} name="type"/> {{r}}
-                  </label>
-              {% endfor %}
-          </div>
+  <div class="checkchecks">
+    <fieldset class="group"> 
+      <legend>Trends in </legend> 
+      <ul class="checkbox"> 
+        {% for header in translators %}
+          <li><input type="checkbox" id="cb1" value={{header}} name="type"/><label for="cb1">{{translators[header]}}</label></li> 
         {% endfor %}
-    </div>
+    </fieldset> 
+  </div>
+
 
     <button id="checkchecks">Checking</button>
 
@@ -135,7 +133,6 @@
     <script>
             // ----------- EVERY CHART NEEDS DATA -------------- 
               function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
-                console.log(d)
                 return "<h4>"+n+"</h4><table>"+
                   "<tr><td>Death Count</td><td>"+""+d.count+"</td></tr>"+
                   "</table>";
@@ -282,7 +279,6 @@
       $("input:checkbox[name=type]:checked").each(function(){
         selectedDimensions.push($(this).val());
       })
-       console.log(selectedDimensions);
        drawParallelCoordinate();
     })
 
@@ -314,12 +310,15 @@
   function drawParallelCoordinate(){
 
     if(drawn == true){
-        console.log("entering here..");
         $("svg")[$("svg").length - 1].remove();
         addVars();
     }
   
     d3.csv("data/all_clean_data.csv", function(error, cars) {
+
+      var color = d3.scale.ordinal()
+                  .domain(['cleveland','long_beach_va_clean','hungarian', 'switzerland'])
+                  .range(['red','blue','green', 'yellow'])
 
     // Extract the list of dimensions and create a scale for each.
    
@@ -334,16 +333,13 @@
           y[d] = d3.scale.ordinal()
             .domain(cars.map(function(p) { return p[d]; }))
             .rangePoints([height, 0]);
-
       }
       else {
           y[d] = d3.scale.linear()
             .domain(d3.extent(cars, function(p) { return +p[d]; }))
             .range([height, 0]);
       }
-
       return true;
-
     }));
 
     // Add grey background lines for context.
@@ -360,7 +356,15 @@
       .selectAll("path")
         .data(cars)
       .enter().append("path")
-        .attr("d", path);
+        .attr("d", path)
+      .attr("d", path)
+      .attr("stroke", function(d) {
+        var company = d.datasource;
+        return color(company);
+      });
+
+
+
 
     // Add a group element for each dimension.
     var g = svg.selectAll(".dimension")
@@ -393,6 +397,8 @@
                 .attr("visibility", null);
           }));
 
+      var translators = {{translators|safe}}
+
         // Add an axis and title.
         g.append("g")
             .attr("class", "axis")
@@ -400,7 +406,9 @@
           .append("text")
             .style("text-anchor", "middle")
             .attr("y", -9)
-            .text(function(d) { return d; });
+            .text(function(d) { 
+              var readableAxis = translators[d];
+              return readableAxis; });
 
         // Add and store a brush for each axis.
         g.append("g")
