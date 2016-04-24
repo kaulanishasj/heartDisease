@@ -10,84 +10,46 @@
             </div>
             <div id="content">
                 <form method="post" action="{{ submit_url }}">
-            <div> First Name: <input type= "text" name= "fname"></div><br>
-
-      <div> Last Name: <input type= "text" name = "lname"></div><br>
-
-      <div> age: <input type= "text" name= "age"></div><br>
+                
+      <div> age: <input type= "text" name= "age" placeholder= "50"></div><br>
 
       <div> sex: <select name= "sex">
-      <option selected="selected" disabled="disabled">Select</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option></select></div><br>
+      <option selected="0" disabled="disabled">Select</option>
+      <option value="Male">1</option>
+      <option value="Female">0</option></select></div><br>
 
-      <div> Chest Pain Type: <select name="chestpain">
-      <option selected="selected" disabled="disabled">Select</option>
-      <option value="Typical angina">Typical angina</option>
-      <option value="Atypical angina">Atypical angina</option>
-      <option value="Non-anginal pain">Non-anginal pain</option>
-      <option value="Asymptomatic">Asymptomatic</option>
+      <div> Chest Pain Type: 
+         <li> Value 1: Typical angina</li>
+         <li> Value 2: Atypical angina</li>
+         <li> Value 3: Non-anginal pain </li>
+         <li> Value 4: Asymptomatic </li>
+      
+      <select name="chestpain">
+      <option selected="1" disabled="disabled">Select</option>
+      <option value="Typical angina">1</option>
+      <option value="Atypical angina">2</option>
+      <option value="Non-anginal pain">3</option>
+      <option value="Asymptomatic">4</option>
       </select></div><br>
+      
+      <div> Resting Blood Pressure(in mm Hg): <input type= "text" name= "bp" placeholder = "120"></div><br>
 
-      <div> Resting Blood Pressure(in mm Hg): <input type= "text" name= "bp"></div><br>
+      <div> Serum Chlolestrol (in mg/dl): <input type= "text" name= "chol" placeholder = "200"></div><br>
 
-      <div> Serum Chlolestrol (in mg/dl): <input type= "text" name= "chol"></div><br>
+    
 
-      <div> Fasting blood sugar(If >120 mg/dl then pick 1 else 0):
-      <select name="fbsugar">
-      <option selected="selected" disabled="disabled"> Select </option>
-      <option value= "fbsugar1"> 1(True) </option>
-      <option value= "fbsugar2"> 0 (False) </option></select></div><br>
-
-       <div> Resting Electrocardiographic Results :
-        <li>Value 0:normal</li>
-        <li>Value 1:having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)</li>
-        <li>Value 2: showing probable or definite left ventricular hypertrophy by Estes' criteria</li>
-
-       <select name ="ecg">
-       <option selected="selected" disabled="disabled">Select</option>
-       <option value="ecg0">0</option>
-       <option value="ecg1">1</option>
-       <option value="ecg2"> 2 </option>
-       </select></div><br>
-
-       <div> Maximum heart rate achieved: <input type= "text" name= "thalach"></div><br>
+       <div> Maximum heart rate achieved: <input type= "text" name= "thalach" placeholder = "110"></div><br>
 
        <div> Exercise induced angina(pick 1 if yes else 0):
 
        <select name= "excercise">
-       <option selected="selected" disabled="disabled">Select</option>
-       <option value=" True"> 1(True) </option>
-       <option value =" False" > 0 (False) </option>
+       <option selected="0" disabled="disabled">Select</option>
+       <option value=" True"> 1 </option>
+       <option value =" False" > 0  </option>
        </select></div><br>
 
-       <div> oldpeak <input type= "text" name= "oldpeak"></div><br>
-
-       <div> Slope- the slope of the peak exercise ST segment:
-         <li> Value 1: upsloping</li>
-         <li> Value 2: flat</li>
-         <li> Value 3: downsloping </li>
-
-         <select name ="slope">
-         <option selected="selected" disabled="disabled">Select</option>
-         <option value="slope1">1</option>
-         <option value="slope2">2</option>
-         <option value="slope3"> 3 </option>
-         </select></div><br>
-
- <div> ca: <input type= "text" name= "ca"></div><br>
-
-
-        <div> thal:
-         <li> Value 3: normal</li>
-         <li> Value 6: fixed defect</li>
-         <li> Value 7: reversible defect </li>
-         <select name ="thal">
-         <option selected="selected" disabled="disabled">Select</option>
-         <option value=" normal">3</option>
-         <option value="fd">6</option>
-         <option value="rd"> 7 </option>
-         </select></div><br>
+       <div> oldpeak:Excercise induced depression <input type= "text" name= "oldpeak" placeholder = "0"></div><br>
+    
       <div><input type="submit" value="Submit"></div>
             </form>
         </div>
