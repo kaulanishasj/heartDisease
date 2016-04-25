@@ -1,28 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Prediction</title>
+
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Heart Diseases Analysis</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/map.css">
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-static-top navbar-light bg-faded">
+      <ul class="nav navbar-nav" style="margin: 19px 4px 13px 0px;">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/source_code">Sourcecode & System</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/data_structure">Predictive Model & Machine Learning</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/form">Heart Disease Risk</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/visual">Data Exploration</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/quality">Data Quality & About</a>
+        </li>
+      </ul>
+    </nav>
+
+
 </head>
 <body>
 <h1>DATA</h1>
-    <h1>{{ bp}}</h1>
-    <h1> {{ age }} </h1>
-    <h1>   {{ sex }} </h1>
-    <h1>  {{ chestpain }} </h1>
-    <h1>  {{ chol }} </h1>
-      <h1>  {{ thalach }} </h1>
-       <h1> {{ excercise }} </h1>
-        <h1> {{ oldpeak }} </h1>
+
         
           {% if res  == 'True' %} 
             <p>You are at risk of a heart attack</p>
           
             {% else %}
             
-                 <p>You are not at risk of a heart attack </p>
-                 {% endif %}
-                 <h3> done </h3>
+            <p>You are not at risk of a heart attack. </p>
+                {% endif %}
                
          
       
