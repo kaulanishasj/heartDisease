@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +14,13 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/map.css">
+
 
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
+
+
   </head>
   <body>
     <nav class="navbar navbar-static-top navbar-light bg-faded">
@@ -126,7 +132,7 @@
     <!--ADULTS WITH HEART DISEASE -->
     <div class="row">
       <div class="col-md-6">
-        <h1>Adults with Heart Disease By State</h1>
+        <h1>Percent of Adults with Heart Disease</h1>
         <a href="http://kff.org/other/state-indicator/percent-of-adults-with-cardiovascular-disease/#table">data source</a>
 
       </div>
@@ -137,6 +143,8 @@
 
 
     <!--MAP VIZ -->
+
+
       <hr>
       <div class="row">
         <div class="col-md-6">
@@ -150,21 +158,23 @@
       </div>
       <div class="row">
         <div class="col-md-4">
+          <button id="both" type="button" class="btn danger-secondary">Both</button>
           <button id="female" type="button" class="btn danger-secondary">Female</button>
           <button id="male" type="button" class="btn danger-secondary">Male</button>
-          <button id="both" type="button" class="btn danger-secondary">Both</button>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">          
           <div class="container">
-            <div id="tooltip"></div>
             <svg width="960" height="600" id="statesvg"></svg>
             <svg width="960" height="600" id="femaleStates"></svg>
             <svg width="960" height="600" id="maleStates"></svg>
           </div>
         </div>
       </div>
+
+      <div id="tooltip"></div>
+
       <hr>
 
       <div class="jumbotron">
@@ -195,6 +205,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/uStates.js"></script> <!-- creates uStates. -->
+    <script src="js/uStates2.js"></script> <!-- creates uStates. -->
+
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="d3/d3.v3.js"></script>
@@ -204,7 +216,7 @@
               function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
                 console.log(d)
                 return "<h4>"+n+"</h4><table>"+
-                  "<tr><td>Death Count: </td><td>"+" "+d.count+"</td></tr>"+"female"+d.femCount+
+                  "<tr><td>Death Count: </td><td>"+" "+d.count+"</td></tr>"+
                   "</table>";
               }
 
@@ -214,7 +226,7 @@
 
               function statetooltipHtml(n, d) {
                 return "<h4>"+n+"</h4><table>"+
-                  "<tr><td>Percent of Adults: </td><td>"+d.percent+"</td></tr>"+
+                  "<tr><td>Percent of Adults: </td><td>"+100*(d.percent)+"%"+"</td></tr>"+
                   "</table>";
               }
                 
@@ -289,6 +301,9 @@
 
 
                 var percentData = {{percentData|safe}}
+                console.log(percentData);
+
+                console.log(femaleData);
 
                 var percentSample = {};
                 ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
@@ -297,9 +312,13 @@
                 "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN", 
                 "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
                     .forEach(function(d){ 
-                        var percent = 100*(percentData[states[d]]);
+
+                        var percent = (percentData[states[d]]);
+                        console.log(percent)
                         percentSample[d]={percent:percent, color:d3.interpolate("#ffffcc", "#800026")(percent)}; 
                     });
+
+                console.log(percentSample)
 
                 var sampleData ={}; /* Sample random data. */   
                 ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
@@ -342,7 +361,7 @@
                 uStates.draw("#femaleStates", femaleSample, tooltipHtml);
                 uStates.draw("#maleStates", maleSample, tooltipHtml);
 
-                uStates.draw("#diagnosed", percentSample, statetooltipHtml);
+                uStates2.draw("#diagnosed", percentSample, statetooltipHtml);
 
 
 
@@ -351,24 +370,45 @@
             $(document).ready(function(){
                 $("#femaleStates").hide();
                 $("#maleStates").hide();
+                $("#both").attr("disabled", true);
+
+
+
                 //Show only Female States
                 $("#female").click(function(){
                     $("#statesvg").hide();
                     $("#maleStates").hide();
                     $("#femaleStates").show();
+
+                    $("#male").attr("disabled", false);
+                    $("#female").attr("disabled", true);
+                    $("#both").attr("disabled", false);
+
                 });
                 //Show both gender states
                 $("#both").click(function(){
                     $("#statesvg").show();
                     $("#femaleStates").hide();
                     $("#maleStates").hide();
+
+                    $("#male").attr("disabled", false);
+                    $("#female").attr("disabled", false);
+                    $("#both").attr("disabled", true);
+
                 });
                 //Show only male states
                 $("#male").click(function(){
                     $("#statesvg").hide();
                     $("#femaleStates").hide();
                     $("#maleStates").show();
+
+                    $("#male").attr("disabled", true);
+                    $("#female").attr("disabled", false);
+                    $("#both").attr("disabled", false);
                 });
+
+
+
             });
     </script>
 
