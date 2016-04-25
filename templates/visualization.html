@@ -50,8 +50,8 @@
   <div class="checkchecks">
     <fieldset class="group">
       <ul class="checkbox" style = "margin: 0px 0px 0px 33px;"> 
-        {% for header in translators %}
-          <li><input type="checkbox" id="cb1" value={{header}} name="type"/><label for="cb1">{{translators[header]}}</label></li>
+        {% for header in array %}
+          <li><input type="checkbox" id="cb1" value={{translators}} name="type"/><label for="cb1">{{translators[header]}}</label></li>
          {% endfor %}
     </fieldset> 
    <div class="row" >

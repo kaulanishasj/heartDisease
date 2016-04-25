@@ -196,6 +196,7 @@ def visual():
 
     rows = list(chunks(i, 5))
     
+    array = ["age", "sex", "cp", "trestbps", "chol", "restecg", "thalach", "oldpeak", "dig", "duiretic", "thaldur", "thalrest", "datasource", "num"]
     translators = {'age' : "Age", 'sex': "Sex", 'cp' : "Chest Pain Type", 'trestbps':"Resting Blood Pressure",
                               'chol' : "Serum Cholestoral" , 'restecg' : "Resting Electrocardiographic Result", 
                               'thalach' : "Maximum Heart Rate Achieved ",
@@ -205,7 +206,7 @@ def visual():
                               'thaldur' : "Duration of Exercise Test(mins)" , 
                               'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", 'num' : "Diagnosed with Heart Disease"}
 
-    variables = {'rows':rows, 'translators':translators}
+    variables = {'rows':rows, 'translators':translators, 'array':array}
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
 
