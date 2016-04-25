@@ -48,15 +48,53 @@
 
 </head>
 <body>
-<h1>DATA</h1>
+    {% if res  == 'True' %} 
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="static/images/risk-02.png" alt="risk">
+                </div>
+                <div class="col-md-9">
+                    <h3>Based on our Prediction Model</h3>
+                    <h1>You <i>are</i> at risk of a heart attack.</h1>
+                </div>
+            </div>
+        </div> 
 
-        
-          {% if res  == 'True' %} 
-            <p>You are at risk of a heart attack</p>
-          
-            {% else %}
+        <!--What's Next?-->
+        <div class="row">
+            <div class="col-md-6">
+            <h2>What's Next?</h2>
+            <p> Please schedule an appointment with your doctor for a complete diagnoses
+            and treadment. Treatment will be necessary to manage your symptoms and reduce 
+            the risk of further problems. This can be done through a combination of 
+            lifestyle changes, medicine and, in some cases, surgery.</p>
+            </div>
+        </div>
+    
+
+        {% else %}
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="static/images/risk-01.png" alt="risk">
+                </div>
+                <div class="col-md-9">
+                    <h3>Based on our Prediction Model</h3>
+                    <h1>You <i>are not</i> at risk of a heart attack.</h1>
+                </div>
+                
+            </div>
+        </div> 
+
+        <!--What's Next?-->
+        <div>
+        <h2>What's Next?</h2>
+                    <p>Even though you are not currently at risk, proper heart health 
+                requires long-term healthy behaviors and life choices. Regularly 
+                check your status.</p>
+        </div>
             
-            <p>You are not at risk of a heart attack. </p>
                 {% endif %}
                
          
