@@ -51,7 +51,9 @@
     <fieldset class="group">
       <ul class="checkbox" style = "margin: 0px 0px 0px 33px;"> 
         {% for header in array %}
-          <li><input type="checkbox" id="cb1" value={{translators}} name="type"/><label for="cb1">{{translators[header]}}</label></li>
+          {% if header != "datasource" %}
+            <li><input type="checkbox" id="cb1" value={{header}} name="type"/><label for="cb1">{{translators[header]}}</label></li>
+          {% endif %}
          {% endfor %}
     </fieldset> 
    <div class="row" >

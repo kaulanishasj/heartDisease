@@ -196,7 +196,7 @@ def visual():
 
     rows = list(chunks(i, 5))
     
-    array = ["age", "sex", "cp", "trestbps", "chol", "restecg", "thalach", "oldpeak", "dig", "duiretic", "thaldur", "thalrest", "datasource", "num"]
+    array = ["age", "sex", "cp", "trestbps", "chol", "restecg", "thalach", "oldpeak", "dig", "diuretic", "thaldur", "thalrest", "datasource", "num"]
     translators = {'age' : "Age", 'sex': "Sex", 'cp' : "Chest Pain Type", 'trestbps':"Resting Blood Pressure",
                               'chol' : "Serum Cholestoral" , 'restecg' : "Resting Electrocardiographic Result", 
                               'thalach' : "Maximum Heart Rate Achieved ",
