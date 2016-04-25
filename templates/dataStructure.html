@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+     <link href="css/sankey.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
@@ -45,16 +46,15 @@
 	  It consists of 849 records and 20 variables with the target variable we are trying to predict being <b>At risk?</b> <br>
 	  Binary variables present in the data have a '?' in the end and have value of 1 if true and 0 if false.
 	  <br>
-		<!---
-		Write about: Where did you get the data from? how reliable is it? How did you clean the  data? what techniques did you use? How did you impute the null values? how did the variance change? how many null values were there in the dataset? what is the size of the dataset? What are the advantages of using the structured datase? Could we have used semi-unstructured dataset? maybe twitter dataset? for heart disease? Talk about the data model? what are the integrity constraints?  How did you combine the differents datasets - using R? DO you see any other structures that are not depicted in the structure? (clusters?), is the data continuous or discrete? nominal, ordinal, interval , ratio, ? should we transform the data in anyway? or is it already normal? did we do any Value Mapping (converting ordinal values to numbers?) did we do any discretization? ( numbers to ordinal?) overfitting and underfitting? talk about the predicting model? how does cross validation avoid over/underfitting, what size is our sample from the total population that is diagnosed with heart diseases?
-
-        Is the data normal?
-		--->
+	
 		<iframe width="1200" height="300" scrolling="yes" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=GVIZ&amp;t=TABLE&amp;q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11%2C+col12%2C+col13%2C+col14%2C+col15%2C+col16%2C+col17%2C+col18%2C+col19+from+1XouYaDiGXVlYdtO9l3JE1G0eN063Z7Ob3ETneLFO&amp;containerId=googft-gviz-canvas"></iframe>
 		
-      
+      </br>
+  
+      <div align="center" id="chart"></div>
 
-      <!-- START THE FEATURETTES -->
+
+     
 
       <hr class="featurette-divider">
 
@@ -76,9 +76,7 @@
         </div>
       </div>
 
-      <!-- /END THE FEATURETTES -->
-
-    </div><!-- /.container -->
+    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -87,5 +85,8 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="js/holder.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdn.rawgit.com/Neilos/bihisankey/master/bihisankey.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>

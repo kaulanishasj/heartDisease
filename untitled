@@ -39,3 +39,22 @@
         </div>
       </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!---
+    Write about: Where did you get the data from? how reliable is it? How did you clean the  data? what techniques did you use? How did you impute the null values? how did the variance change? how many null values were there in the dataset? what is the size of the dataset? What are the advantages of using the structured datase? Could we have used semi-unstructured dataset? maybe twitter dataset? for heart disease? Talk about the data model? what are the integrity constraints?  How did you combine the differents datasets - using R? DO you see any other structures that are not depicted in the structure? (clusters?), is the data continuous or discrete? nominal, ordinal, interval , ratio, ? should we transform the data in anyway? or is it already normal? did we do any Value Mapping (converting ordinal values to numbers?) did we do any discretization? ( numbers to ordinal?) overfitting and underfitting? talk about the predicting model? how does cross validation avoid over/underfitting, what size is our sample from the total population that is diagnosed with heart diseases?
+
+        Is the data normal?
+    --->

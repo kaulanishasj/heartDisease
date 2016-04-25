@@ -36,12 +36,12 @@ var OPACITY = {
 
 var formatNumber = function (d) {
   var numberFormat = d3.format(",.0f"); // zero decimal places
-  return "£" + numberFormat(d);
+  return "Relationship Strength = " + numberFormat(d);
 },
 
 formatFlow = function (d) {
   var flowFormat = d3.format(",.0f"); // zero decimal places with sign
-  return "£" + flowFormat(Math.abs(d)) + (d < 0 ? " CR" : " DR");
+  return "Relationship Strength = " + flowFormat(Math.abs(d)) + (d < 0 ? " CR" : " DR");
 },
 
 // Used when temporarily disabling user interractions to allow animations to complete
@@ -501,17 +501,19 @@ function update () {
 
 }
 
+
+
 var exampleNodes = [
   {"type":"Revenue","id":1,"parent":null,"number":"104.253","name":"Age"},
-  {"type":"Revenue","id":2,"parent":null,"number":"143.174","name":"Sex"},
-  {"type":"Revenue","id":3,"parent":null,"number":"82.159","name":"Chest Pain"},
-  {"type":"Revenue","id":4,"parent":null,"number":"0.767","name":"Resting Blood Pressure"},
-  {"type":"Revenue","id":5,"parent":null,"number":"17.929","name":"Serum Cholestoral"},
-  {"type":"Revenue","id":6,"parent":null,"number":"58.281","name":"Maximum Heart Rate Achieved"},
-  {"type":"Revenue","id":7,"parent":null,"number":"37.306","name":"ST Depression Induced By Exercise Relative To Rest"},
-  {"type":"Revenue","id":8,"parent":null,"number":"2.502","name":"Diuretic During Excercise"},
-  {"type":"Revenue","id":9,"parent":null,"number":"2.689","name":"Exercise Induced Angina"},
-  {"type":"Revenue","id":10,"parent":null,"number":"OUTPUT","name":"Heart Disease Contraction"}
+  {"type":"Asset","id":2,"parent":null,"number":"143.174","name":"Sex"},
+  {"type":"Expense","id":3,"parent":null,"number":"82.159","name":"Chest Pain"},
+  {"type":"Equity","id":4,"parent":null,"number":"0.767","name":"Resting Blood Pressure"},
+  {"type":"Liability","id":5,"parent":null,"number":"17.929","name":"Serum Cholestoral"},
+  {"type":"Asset","id":6,"parent":null,"number":"58.281","name":"Maximum Heart Rate Achieved"},
+  {"type":"Expense","id":7,"parent":null,"number":"37.306","name":"ST Depression Induced By Exercise Relative To Rest"},
+  {"type":"Liability","id":8,"parent":null,"number":"2.502","name":"Diuretic During Excercise"},
+  {"type":"Equity","id":9,"parent":null,"number":"2.689","name":"Exercise Induced Angina"},
+  {"type":"Asset","id":10,"parent":null,"number":"OUTPUT","name":"Heart Disease Contraction"}
 ]
 
 
