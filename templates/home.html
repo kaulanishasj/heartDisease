@@ -20,7 +20,6 @@
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
 
-
   </head>
   <body>
     <nav class="navbar navbar-static-top navbar-light bg-faded">
@@ -61,7 +60,7 @@
             <div class="carousel-caption">
               <h2>Heart Disease in Women</h2>
               <p>Heart disease is the number one cause of death for both men and women in the United States. Cancer and stroke round out the top three.</p>
-              <p><img src="static/images/image1.jpeg" height="200" width="200"></br></p>
+              <p><img src="static/images/image_1.jpeg" height="240" width="500"></br></p>
             </div>
           </div>
         </div>
@@ -73,7 +72,7 @@
               <p>Cardiovascular disease is the leading global cause of death, accounting for 17.3
                  million deaths per year, a number that is expected to grow to more than 23.6
                  million by 2030. </p>
-                 <p><img src="static/images/image2.jpg" height="200" width="200"></br></p>
+                 <p><img src="static/images/image_2.jpeg" height="240" width="500"></br></p>
             </div>
           </div>
         </div>
@@ -84,7 +83,7 @@
               <h1>Costs of Heart Diseases</h1>
               <p>Direct and indirect costs of cardiovascular diseases and stroke total more than
                  $320.1 billion. That includes health expenditures and lost productivity. </p>
-                 <p><img src="static/images/image3.jpg" height="200" width="200"></br></p>
+                 <p><img src="static/images/image_3.jpg" height="240" width="500"></br></p>
             </div>
           </div>
         </div>
@@ -128,54 +127,43 @@
     <div>
     </div>
 
-
-    <!--ADULTS WITH HEART DISEASE -->
-    <div class="row">
-      <div class="col-md-6">
-        <h1>Percent of Adults with Heart Disease</h1>
-        <a href="http://kff.org/other/state-indicator/percent-of-adults-with-cardiovascular-disease/#table">data source</a>
-
+      <div align="center">
+          <!--ADULTS WITH HEART DISEASE -->
+              <h1>Percent of Adults with Heart Disease</h1>
+              <a href="http://kff.org/other/state-indicator/percent-of-adults-with-cardiovascular-disease/#table">data source</a>
+          <div class="row">
+            <div id="statetooltip"></div>
+            <svg width = "960" height ="600" id="diagnosed"></svg>
+          </div>
       </div>
-    <div class="row">
-      <div id="statetooltip"></div>
-      <svg width = "960" height ="600" id="diagnosed"></svg>
-    </div>
+
 
 
     <!--MAP VIZ -->
 
 
-      <hr>
-      <div class="row">
-        <div class="col-md-6">
+      <div align="center">
           <h1>Number of Heart Disease Deaths per 100,000 Population</h1>
           <p>With the following maps, you can explore how many heart disease deaths 
           occur by gender in your own state and compare it to others. Are you living
           in a state where high rates of heart disease? These visuals should give you 
           a sense of the general rates of heart disease mortality in the US. 
           </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
+
           <button id="both" type="button" class="btn danger-secondary">Both</button>
           <button id="female" type="button" class="btn danger-secondary">Female</button>
           <button id="male" type="button" class="btn danger-secondary">Male</button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">          
+        
           <div class="container">
             <svg width="960" height="600" id="statesvg"></svg>
             <svg width="960" height="600" id="femaleStates"></svg>
             <svg width="960" height="600" id="maleStates"></svg>
           </div>
-        </div>
       </div>
 
       <div id="tooltip"></div>
 
-      <hr>
+     
 
       <div class="jumbotron">
           <h1><i>What is my risk of having heart disease?</i></h>
@@ -315,7 +303,7 @@
 
                         var percent = (percentData[states[d]]);
                         console.log(percent)
-                        percentSample[d]={percent:percent, color:d3.interpolate("#ffffcc", "#800026")(percent)}; 
+                        percentSample[d]={percent:percent, color:d3.interpolate("#ffffcc", "#800026")(percent/100)}; 
                     });
 
                 console.log(percentSample)
