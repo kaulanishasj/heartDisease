@@ -197,11 +197,11 @@ def visual():
     rows = list(chunks(i, 5))
     
     translators = {'age' : "Age", 'sex': "Sex", 'cp' : "Chest Pain Type", 'trestbps':"Resting Blood Pressure",
-                              'chol' : "Serum Cholestoral" , 'fbs' : "Fasting Blood Sugar", 'restecg' : "Resting Electrocardiographic Result", 
-                              'thalach' : "Maximum Heart Rate Achieved ", 'exang' : "Exercise Induced Angina", 
+                              'chol' : "Serum Cholestoral" , 'restecg' : "Resting Electrocardiographic Result", 
+                              'thalach' : "Maximum Heart Rate Achieved ",
                               'oldpeak': "ST Depression Induced By Exercise Relative To Rest", 
-                              'htn' : "Hypertensive Heart Disease", 'dig' : "Digitalis During Excercise", 
-                              'prop' : "Beta Blocker During Excercise", 'nitr' : "Nitrates During Excercise", 'diuretic' : "Diuretic During Excercise",
+                               'dig' : "Digitalis During Excercise", 
+                               'diuretic' : "Diuretic During Excercise",
                               'thaldur' : "Duration of Exercise Test(mins)" , 
                               'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", 'num' : "Diagnosed with Heart Disease"}
 

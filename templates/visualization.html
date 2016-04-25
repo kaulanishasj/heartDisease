@@ -43,71 +43,22 @@
         </li>
       </ul>
     </nav>
-     <div style="margin: 53px 85px 7px 49px;" align="center">
-       <h3>
-          <span class="text-muted">Write about: show that the data is normal.? are there any assumptions? are there any   
-                outliers what could be  the cause? are there any relations between any two variables? summary of the datasets? some summary statistics? compare the variances of men and women from the map data?
-          </span>
-      </h3>
+    
    
     
-      
-      <div style="text-align:left;">
-        <div class="container">
-          <h2>Conditions that Increase Risk for Heart Disease</h2>
-          <ul>
-            <li>High Blood Pressure</li>
-            <li><b>High Cholesterol</b></li>
-            <li>Diabetes</li>
-          </ul>
-          <h2>Look at our data values filtered by the following features and see how High Cholesterol is related.</h2>
-          <div class="row">
-            <div class="col-md-3">
-              <div class="row"><h2>Age</h2></div>
-              <div class="row"><p>Participants' age in years</p></div>
-            </div>
-            <div class="col-md-3">
-              <div class="row"><h2>Gender</h2></div>
-              <div class="row"><p>Participants' gender (1=male, 0= female)</p></div>
-            </div>
-            <div class="col-md-3">
-              <div class="row"><h2>Cholesterol</h2></div>
-              <div class="row"><p>Participants' serum cholesterol which is 
-                composed of high-density lipoprotein (HDL cholesterol), low-density
-                lipoprotein (LDL cholesterol) and triglycerides measured in mg/dL. 
-                The American Heart Association defines normal total cholesterol 
-                as less than 200 mg/dL.</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="row"><h2>Resting Electrocardiographic Measure</h2></div>
-              <div class="row"><p>Rating of participants' electrocardiograph.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
 
   <div class="checkchecks">
-    <fieldset class="group"> 
-      <legend>Trends in </legend> 
-      <ul class="checkbox"> 
+    <fieldset class="group">
+      <ul class="checkbox" style = "margin: 0px 0px 0px 33px;"> 
         {% for header in translators %}
-          <li><input type="checkbox" id="cb1" value={{header}} name="type"/><label for="cb1">{{translators[header]}}</label></li> 
-        {% endfor %}
+          <li><input type="checkbox" id="cb1" value={{header}} name="type"/><label for="cb1">{{translators[header]}}</label></li>
+         {% endfor %}
     </fieldset> 
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-10">
-        <button id="checkchecks">Checking</button>
-      </div>
+   <div class="row" >
+       <button style = "margin: 18px 13px 8px 103px;" class = "btn btn-warning" id="checkchecks">Display Selected Axes</button>
     </div>
   </div>
 
-
-   <!-- <button id="checkchecks">Checking</button> -->
 
 </body>
     <!-- Bootstrap core JavaScript
@@ -123,7 +74,7 @@
 
 
 
-    var selectedDimensions = ["age", "sex", "chol", "restecg"];
+    var selectedDimensions = ["age", "sex", "chol", "cp"];
 
     $('#checkchecks').click(function(){
       selectedDimensions.length = 0;
@@ -137,8 +88,8 @@
     var margin, width, height, x, y, dragging, line, axis, background, foreground, svg;
 
     function addVars(){
-        margin = {top: 30, right: 10, bottom: 10, left: 10},
-            width = 960 - margin.left - margin.right,
+        margin = {top: 30, right: 5, bottom: 10, left: 5},
+            width = 1250 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
 
         x = d3.scale.ordinal().rangePoints([0, width], 1),
@@ -150,7 +101,11 @@
             background,
             foreground;
 
-        svg = d3.select("body").append("svg").attr("id", "anisha")
+
+        console.log("*************");
+        console.log(d3.selectAll(".checkchecks")[0])
+
+        svg = d3.selectAll(".checkchecks").append("svg").attr("id", "anisha")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
