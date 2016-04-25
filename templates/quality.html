@@ -41,19 +41,13 @@
       </ul>
     </nav>
     <div class="container marketing">
-	<!-----
-      <h3>
-        <span class="text-muted">Write about: any example of causality vs correlation? any example of bayes theorem? 
-        Sampling error or the distribution? 
-        is the data biased? Random Bias, Systematic Bias, Selection Bias, Non-response Bias. Residual analysis of finding if the variable in independent
-        Is the data a good sample? Data Re-usability ? 
-      </span></h3>
-	  ---->
-	  <h2 class="featurette-heading">Data Sources
-          <p class="lead">We used two kinds of data sets to answer the two questions we formed. In order to answer the question on "How prevalent is Heart Disease in USA?" we used fact sheets published by Center for Disease Control and Prevention (CDC) which can be found <a href = "http://www.cdc.gov/heartdisease/facts.htm"> here.</a>
+
+	  <h2 class="featurette-heading">Data Sources</h2></br>
+      <p class="lead" style="font-size: 14px;">We used two kinds of data sets to answer the two questions we formed. In order to answer the question on "How prevalent is Heart Disease in USA?" we used fact sheets published by Center for Disease Control and Prevention (CDC) which can be found <a href = "http://www.cdc.gov/heartdisease/facts.htm"> here.</a>
 		  Various statistics about heart disease prevalance are regularly collected and maintained by CDC. Hence this dataset seemed to be right choice to talk about the prevalance of this disease.</p>
-		  <p class = "lead"> In order to answer the question on "What may be the causes of heart disease?" and "What are my chances of being suffering from heart disease?" We used dataset published on <a href = "http://archive.ics.uci.edu/ml/datasets/Heart+Disease"> UCI data repository.</a> This dataset contained various characteristics of patients such as their cholestrol level, whether they had chest pain, age, sex, etc. along with whether they were diagnosed with a heart disease. Hence we used this dataset to provide insights on what may be the causes of heart diseases using the information provided for diagnosed patients.</p>
-		  <p class = "lead"> The datasets used for exploration from CDC did not require any processing. The data was very clean and coherent with no outliers. Hence we only discussed the UCI heart disease dataset in the following sections which have interesting data quality characteristics. </p>
+		  <p class = "lead" style="font-size: 14px;"> In order to answer the question on "What may be the causes of heart disease?" and "What are my chances of being suffering from heart disease?" We used dataset published on <a href = "http://archive.ics.uci.edu/ml/datasets/Heart+Disease"> UCI data repository.</a> This dataset contained various characteristics of patients such as their cholestrol level, whether they had chest pain, age, sex, etc. along with whether they were diagnosed with a heart disease. Hence we used this dataset to provide insights on what may be the causes of heart diseases using the information provided for diagnosed patients.</p>
+		  
+      <p class = "lead" style="font-size: 14px;"> The datasets used for exploration from CDC did not require any processing. The data was very clean and coherent with no outliers. Hence we only discussed the UCI heart disease dataset in the following sections which have interesting data quality characteristics. </p>
 
       <!-- START THE FEATURETTES -->
 
@@ -61,8 +55,11 @@
 
       <div class="row featurette">
         <div class="col-md-6">
-          <h4 class="featurette-heading"> UCI Heart Disease Dataset </h4>
-          <p class="lead" font size = "6">The dataset used in our project was aggregated from four different datasets collected from Hungary, Switzerland, and the US. Percentage of aggregated data obtained from each source is shown in the adjacent pie chart. The data itself was available in a text file with each row broken up across several lines. Using a parser script we wrote in python, we aggregated data from these sources and stored it in csv format. After aggregation, we had 899 records with 76 attributes. However, after initial exploration, we got rid of 26 variables which contained the same value across all records of the dataset. These variables included ssn, name, etc. pertaining to individual characteristics of the corresponding patients, which were anonymized by adding dummy values in their place.<br> </p>
+          <h4 class="featurette-heading" align="center"> UCI Heart Disease Dataset </h4>
+          <p class="lead" style="font-size: 14px;" >The dataset used in our project was aggregated from four different datasets collected from Hungary, Switzerland, and the US. Percentage of aggregated data obtained from each source is shown in the adjacent pie chart. The data itself was available in a text file with each row broken up across several lines. Using a parser script we wrote in python, we aggregated data from these sources and stored it in csv format. 
+
+          <br/><br/><br/>
+          After aggregation, we had 899 records with 76 attributes. However, after initial exploration, we got rid of 26 variables which contained the same value across all records of the dataset. These variables included ssn, name, etc. pertaining to individual characteristics of the corresponding patients, which were anonymized by adding dummy values in their place.<br> </p>
         </div>
         <div class="col-md-6">
 
@@ -72,24 +69,26 @@
 
       <hr class="featurette-divider">
       <div class="row featurette">
-          <h4 class="featurette-heading">Data Transformation</h4>
-          <p class="lead">
+          <h4 class="featurette-heading" align="center">Data Transformation</h4>
+          <p class="lead" style="font-size: 14px;" align="center">
 		  The target labels of this data initially ranged from 0 to 4, where 0 implied no presence of heart disease. It was not clear what values 1 through represent from the data representation, but they all denoted the presence of some form of heart disease. Hence we transformed 1 through 4 values to 1, so that 0 implies no heart disease and 1 implies presence of heart disease. <br>
 		  With this transformed dataset we first performed missing value analysis.</p>
         </div>
 
       <hr class="featurette-divider">
 	  <div class="row featurette">
-          <h4 class="featurette-heading">Missing Value Analysis</h4>
-          <p class="lead">We performed missing value analysis on the dataset with 50 variables remaining. Many variables had a large proportion of missing values which need to be imputed before we use it for prediction. We discarded all the variables (17 variables in the dataset) that have more than 10% missing values proportion so that we don't induce too much bias into the original data through imputation. <br>
-		  We then carefully examined each of the remaining variables to determine if it made sense to impute values for these variables. While some variable definitions were not very clear from the data sources, other variables such as day of exercise, month of exercise, etc. were too specific to be imputed based on mean/mode/standard deviation values. Removing these variables finally resulted in a dataset with 18 features and a binary target variable which denoted whether the patient suffered from heart disease.</p>
+          <h4 class="featurette-heading" align="center">Missing Value Analysis</h4>
+          <p class="lead" style="font-size: 14px;" align="center">We performed missing value analysis on the dataset with 50 variables remaining. Many variables had a large proportion of missing values which need to be imputed before we use it for prediction. We discarded all the variables (17 variables in the dataset) that have more than 10% missing values proportion so that we don't induce too much bias into the original data through imputation. <br/>
+		  
+      We then carefully examined each of the remaining variables to determine if it made sense to impute values for these variables. While some variable definitions were not very clear from the data sources, other variables such as day of exercise, month of exercise, etc. were too specific to be imputed based on mean/mode/standard deviation values. Removing these variables finally resulted in a dataset with 18 features and a binary target variable which denoted whether the patient suffered from heart disease.</p>
+
 		  </div>
           <iframe width="1200" height="500" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas&amp;q=select+col0%2C+col2+from+19r9gybNVPSwLgxg1484ZWXAfoEbPLJvR9EEDq58p+order+by+col2+asc+limit+20&amp;viz=GVIZ&amp;t=COLUMN&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_vAxes=%5B%7B%22title%22%3Anull%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_useFirstColumnAsDomain=true&amp;gco_isStacked=false&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22viewWindow%22%3Anull%2C+%22viewWindowMode%22%3Anull%7D&amp;gco_legend=none&amp;gco_title=Percentage+of+Missing+Values&amp;gco_titleTextStyle=%7B%22color%22%3A%22%23000%22%2C+%22fontSize%22%3A%2224%22%2C+%22bold%22%3Atrue%7D&amp;gco_series=%7B%220%22%3A%7B%22color%22%3A%22%23a64d79%22%7D%7D&amp;gco_tooltip=%7B%22isHtml%22%3Atrue%7D&amp;tmplt=1&amp;width=1200&amp;height=500"></iframe>
 	
 	<hr class="featurette-divider">
 	<div class="row featurette">
-          <h4 class="featurette-heading">Outlier Analysis</h4>
-          <p class="lead"> We analyzed 20 variables to test for outliers. To start the analysis we made a box plot for each variable and calculated a
+          <h4 class="featurette-heading" align="center">Outlier Analysis</h4>
+          <p class="lead" style="font-size: 14px;" align="center"> We analyzed 20 variables to test for outliers. To start the analysis we made a box plot for each variable and calculated a
               a range of the values. Then we researched and collected the normal ranges for the variables from the internet to get a sense of the
               acceptable values.We observed records that had 0 resting bp.As we can see from the box plots below, resting BP and resting heart rate seemed to have high number of outliers.It is highly unlikely that a person will have that value so we replaced the outlier with mean.Similarly for resting heart rate, some records had values less than 20 while the normal range allows for values between 40-120. Hence, once again we replaced the outliers with the mean.
               </p>
@@ -99,8 +98,8 @@
 
     <hr class="featurette-divider">		  
 	<div class="row featurette">
-          <h4 class="featurette-heading">Missing Values Imputation</h4>
-          <p class="lead">We analyzed the pattern of missing values in this dataset to verify if they are missing at random. <br>
+          <h4 class="featurette-heading" align="center">Missing Values Imputation</h4>
+          <p class="lead" style="font-size: 14px;" align="center">We analyzed the pattern of missing values in this dataset to verify if they are missing at random. <br>
 		  One pattern that we found is that values from variables denoting if <b>calcium blocker</b>, <b>nitrates</b>, <b>beta blocker</b>, <b>digitalis</b>, and <b>diuretic</b> were used during exercise were missing together for most part. Particularly, there were 50 rows for which these features along with <b>Resting Blood Pressure</b>, <b>Resting Heart Rate</b>, <b>Maximum Heart Rate</b>, <b>Exercise Duration</b>, and <b>Exercise induced Angina</b> were all missing together. These seemed to be bad sample data points since its very unlikely for a patient suspected for heart disease will almost always have these values recorded. We decided to remove these points from our dataset in order to avoid adding bias to the data through imputation. <br>
 		  We then imputed missing values for each individual variable, using the following criteria: <br>
 		  1. Continuous variables - using standard deviation since it introduced minimum bias in the data <br>

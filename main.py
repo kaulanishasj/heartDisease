@@ -226,8 +226,8 @@ def data_storage():
 def source_code():
     template = JINJA_ENVIRONMENT.get_template('templates/sourceCode.html')
     image4 = url_for('static', filename='images/image4.jpg')
-
-    return template.render(image4=image4)
+    image5 = url_for('static', filename='images/image5.png')
+    return template.render(image4=image4, image5=image5)
 
 @app.route('/quality')
 def quality():
