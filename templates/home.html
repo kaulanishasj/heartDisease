@@ -101,26 +101,53 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
+
+    <div class="jumbotron">
+      <h1>What is Heart disease?</h1>
+      <p>Heart disease, also known as coronary heart disease, encompasses a class 
+      of illnesses; all of which involve the heart, its vessels, and more. A brief
+      overview is provided below. </p>
+    </div>
 
       <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Alert</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Detect</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Prevent</h2>
-          <p>Heart disease can be prevented. </p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
+      <div align="center">
+        <div class="row">
+          <div class="col-lg-4">
+            <img class="img-circle" src="static/images/coronary.png" alt="periph">
+            <h2>Coronary Artery Disease</h2>
+            <p>Narrowed arteries that deliver limited amounts of blood.</p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="img-circle" src="static/images/bloodpressure.png" alt="periph">
+            <h2>High Blood Pressure</h2>
+            <p>A condition in which the force of the blood against the artery walls is too high.</p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="img-circle" src="static/images/congestive.png" alt="periph">
+            <h2>Congestive Heart Disease</h2>
+            <p>A chronic condition in which the heart inefficiently pumps blood.</p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-lg-4">
+            <img class="img-circle" src="static/images/per.png" alt="periph">
+            <h2>Peripheral Artery Disease</h2>
+            <p>A circulatory condition in which narrowed blood vessels reduce blood flow to the limbs.</p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="img-circle" src="static/images/arrythmia.png" alt="periph">
+
+            <h2>Arrythmia</h2>
+            <p>Improper beating of the heart, whether irregular, too fast, or too slow.</p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="img-circle" src="static/images/congenital.png" alt="periph">
+            <h2>Congential Heart Disease</h2>
+            <p>An abnormality in the heart that develops before birth.</p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div>
+
 
 
     <!--WHAT IS HEART DISEASE -->
@@ -132,7 +159,7 @@
               <h1>Percent of Adults with Heart Disease</h1>
               <a href="http://kff.org/other/state-indicator/percent-of-adults-with-cardiovascular-disease/#table">data source</a>
           <div class="row">
-            <div id="statetooltip"></div>
+            <div id="statetooltip"><svg id="extra"></svg></div>
             <svg width = "960" height ="600" id="diagnosed"></svg>
           </div>
       </div>

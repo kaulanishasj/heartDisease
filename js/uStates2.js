@@ -61,8 +61,21 @@
             d3.select("#statetooltip").html(toolTip(d.n, data[d.id]))  
                 .style("left", (d3.event.pageX) + "px")     
                 .style("top", (d3.event.pageY - 28) + "px");            
+        //}
+            var svg = d3.select("body")
+                    .append(svg)
+                    .attr("width", 50)
+                    .attr("height", 50);
+
+            svg.selectAll("rect")
+                .enter()
+                .append("rect")
+                .attr("x", 0)
+                .attr("y", 0)
+                .attr("width", 20)
+                .attr("height", 20);
+
         }
-        
         function mouseOut(){
             d3.select("#statetooltip").transition().duration(500).style("opacity", 0);      
         }
