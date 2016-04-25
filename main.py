@@ -56,7 +56,7 @@ def get_all_data():
         logging.info("failed to load file")        
 
 #load data for % of americans with heart disease
-def get_percent_data():
+def open_percent_data():
     try:
         with open("data/hasHeartDisease.csv", 'rb') as f:
             read = csv.reader(f)
@@ -78,6 +78,15 @@ def dataDict(d):
         data[state] = count
     return data
 
+def get_percent_data(data):
+    percentData = {}
+    for row in data:
+        state = row[0]
+        percent = row[1]
+
+        percentData[state] = percent
+    logging.info("percent", percentData)
+    return percentData
     
 def hd_predict(cp = 1, exang = 0, oldpeak = 0, chol = 200, sex = 0, trestbps = 120, thalach = 110, age = 50):
     result = False
@@ -121,9 +130,7 @@ def hd_predict(cp = 1, exang = 0, oldpeak = 0, chol = 200, sex = 0, trestbps = 1
     
     return result
     
-    
-    
-    
+  
 def get_data(data):
     #state, male, female
     femaleData = {}
@@ -139,9 +146,10 @@ def get_data(data):
 
     for row in data:
         state = row[0]
-        male = float(row[1])
-        female = float(row[2])
-        both = float(male) + float(female)
+        male = round(float(row[1]), 2)
+        female = round(float(row[2]), 2)
+        both = round((male + female), 2)
+
         femaleData[state] = female
         maleData[state] = male
         bothData[state] = both 
@@ -161,8 +169,10 @@ def get_data(data):
 def index():
     template = JINJA_ENVIRONMENT.get_template('templates/home.html')
     data = get_all_data()
+    percent = open_percent_data()
+    percentData = get_percent_data(percent)
+
     (femaleData, maleData, bothData, femaleAv, maleAv, bothAv) = get_data(data)
-    percentData = get_percent_data()
     logging.info(percentData)
 
     variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
