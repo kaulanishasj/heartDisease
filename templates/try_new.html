@@ -6,41 +6,56 @@
     <body>
         <div id="container">
             <div class="title">
-                <h1>POST request with Flask</h1>
+                <h1>Heart Disease Analysis Form</h1>
             </div>
             <div id="content">
                 <form method="post" action="{{ submit_url }}">
                 
+      <h1>Heart Disease Prediction</h1>
+      <p>For some fields, a value has been filled. Edit if possible.</p>
+      <h2>Age</h2>
+      <p></p>
       <div> age: <input type= "text" name= "age" placeholder= "50"></div><br>
 
+      <h2>Sex</h2>
+      <p></p>
       <div> sex: <select name= "sex">
       <option selected="0" disabled="disabled">Select</option>
       <option value= 1>Male</option>
       <option value= 0>Female</option></select></div><br>
 
+
+      <h2>Chest Pain and Angina?</h2>
+      <p>Angina is the pain you feel when one or more of your coronary arteries becomes damaged, blocked or narrowed and isn't able to bring enough oxygen-rich blood to your heart. The pain may occur during physical activity, exercise, stress, periods of extreme cold or hot temperatures, after heavy meals or while drinking alcohol or smoking.</p>
       <div> Chest Pain Type: 
-         <li> Value 1: Typical angina</li>
-         <li> Value 2: Atypical angina</li>
-         <li> Value 3: Non-anginal pain </li>
-         <li> Value 4: Asymptomatic </li>
+         <li> Typical angina(Angina often is described as pressure, squeezing, burning, or tightness in the chest. The pain or discomfort usually starts behind the breastbone.)</li>
+         <li> Atypical angina (you may not experience typical symptoms of angina and instead may feel a vague chest discomfort, shortness of breath, fatigue, nausea, back or neck pain or burning indigestion. Women are more likely to experience atypical symptoms such as vague chest discomfort.)</li>
+         <li> Non-anginal pain</li>
+         <li> None </li>
       
       <select name="chestpain">
       <option selected="1" disabled="disabled">Select</option>
-      <option value=1>Typical anginal</option>
+      <option value=1>Anginal Pain</option>
       <option value=2>Atypical angina</option>
       <option value=3>Non-anginal pain</option>
-      <option value=4>Asymptomatic</option>
+      <option value=4>None</option>
       </select></div><br>
       
+
+      <h2>Blood Pressure</h2>
+      <p>Blood pressure measures the force pushing outwards on your arterial walls. Over time, if the force of  blood flow is often high, the tissue that makes up the walls of arteries gets stretched beyond its healthy limit and damaged.</p>
       <div> Resting Blood Pressure(in mm Hg): <input type= "text" name= "bp" placeholder = "120"></div><br>
 
       <div> Serum Chlolestrol (in mg/dl): <input type= "text" name= "chol" placeholder = "200"></div><br>
 
     
 
-       <div> Maximum heart rate achieved: <input type= "text" name= "thalach" placeholder = "110"></div><br>
+       
+      <h2>Exercise</h2>
+      <p>To fill out this portion of the form, you will need data from an exercise session. Consider what:</p>
+       <div> What is the maximum maximum heart rate achieved while doing exercise: <input type= "text" name= "thalach" placeholder = "110"></div><br>
 
-       <div> Exercise induced angina(pick 1 if yes else 0):
+       <div> Do you experience angine when exercising? (pick 1 if yes else 0):
 
        <select name= "excercise">
        <option selected="0" disabled="disabled">Select</option>

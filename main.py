@@ -229,6 +229,11 @@ def source_code():
 
     return template.render(image4=image4)
 
+@app.route('/testing')
+def testing():
+    template = JINJA_ENVIRONMENT.get_template('templates/testing.html')
+    return template.render()
+
 @app.route('/quality')
 def quality():
     template = JINJA_ENVIRONMENT.get_template('templates/quality.html')
