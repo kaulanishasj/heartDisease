@@ -179,9 +179,6 @@ def chunks(l, n):
 
 @app.route('/visual')
 def visual():
-    data = get_all_data()
-    (femaleData, maleData, bothData, femaleAv, maleAv, bothAv) = get_data(data)
-    
     with open("data/all_clean_data.csv", "rb") as f:
         reader = csv.reader(f)
         i = reader.next()
@@ -198,8 +195,7 @@ def visual():
                               'thaldur' : "Duration of Exercise Test(mins)" , 
                               'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", 'num' : "Diagnosed with Heart Disease"}
 
-    variables = {'bothData':bothData, 'female': femaleData, 'male': maleData, 'both': bothData, 
-    'femaleAv': femaleAv, 'maleAv': maleAv, 'bothAv': bothAv,'rows':rows, 'translators':translators}
+    variables = {'rows':rows, 'translators':translators}
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
 

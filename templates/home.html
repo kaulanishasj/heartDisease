@@ -126,7 +126,7 @@
     <!--ADULTS WITH HEART DISEASE -->
     <div class="row">
       <div class="col-md-6">
-        <h1>Adults with Heart Disease By State</h1>
+        <h1>Percent of Adults with Heart Disease</h1>
         <a href="http://kff.org/other/state-indicator/percent-of-adults-with-cardiovascular-disease/#table">data source</a>
 
       </div>
@@ -150,9 +150,9 @@
       </div>
       <div class="row">
         <div class="col-md-4">
+          <button id="both" type="button" class="btn danger-secondary">Both</button>
           <button id="female" type="button" class="btn danger-secondary">Female</button>
           <button id="male" type="button" class="btn danger-secondary">Male</button>
-          <button id="both" type="button" class="btn danger-secondary">Both</button>
         </div>
       </div>
       <div class="row">
@@ -204,7 +204,7 @@
               function tooltipHtml(n, d){ /* function to create html content string in tooltip div. */
                 console.log(d)
                 return "<h4>"+n+"</h4><table>"+
-                  "<tr><td>Death Count: </td><td>"+" "+d.count+"</td></tr>"+"female"+d.femCount+
+                  "<tr><td>Death Count: </td><td>"+" "+d.count+"</td></tr>"+
                   "</table>";
               }
 
@@ -351,24 +351,45 @@
             $(document).ready(function(){
                 $("#femaleStates").hide();
                 $("#maleStates").hide();
+                $("#both").attr("disabled", true);
+
+
+
                 //Show only Female States
                 $("#female").click(function(){
                     $("#statesvg").hide();
                     $("#maleStates").hide();
                     $("#femaleStates").show();
+
+                    $("#male").attr("disabled", false);
+                    $("#female").attr("disabled", true);
+                    $("#both").attr("disabled", false);
+
                 });
                 //Show both gender states
                 $("#both").click(function(){
                     $("#statesvg").show();
                     $("#femaleStates").hide();
                     $("#maleStates").hide();
+
+                    $("#male").attr("disabled", false);
+                    $("#female").attr("disabled", false);
+                    $("#both").attr("disabled", true);
+
                 });
                 //Show only male states
                 $("#male").click(function(){
                     $("#statesvg").hide();
                     $("#femaleStates").hide();
                     $("#maleStates").show();
+
+                    $("#male").attr("disabled", true);
+                    $("#female").attr("disabled", false);
+                    $("#both").attr("disabled", false);
                 });
+
+
+
             });
     </script>
 
