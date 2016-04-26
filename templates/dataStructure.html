@@ -49,7 +49,7 @@
   	  Binary variables present in the data have a '?' in the end and have value of 1 if true and 0 if false.
   	  <br/>
   	 <br/>
-  		<iframe width="1000" height="300" scrolling="yes" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=GVIZ&amp;t=TABLE&amp;q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11%2C+col12%2C+col13%2C+col14%2C+col15%2C+col16%2C+col17%2C+col18%2C+col19+from+1XouYaDiGXVlYdtO9l3JE1G0eN063Z7Ob3ETneLFO&amp;containerId=googft-gviz-canvas"></iframe>
+  	<iframe width="1000" height="300" scrolling="yes" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=GVIZ&amp;t=TABLE&amp;q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11%2C+col12%2C+col13%2C+col14%2C+col15%2C+col16%2C+col17%2C+col18%2C+col19+from+1XouYaDiGXVlYdtO9l3JE1G0eN063Z7Ob3ETneLFO&amp;containerId=googft-gviz-canvas"></iframe>
   		
       </br>
       <h4 class="featurette-heading" align="center">ANOVA Analysis</h4>
@@ -60,7 +60,7 @@
       <hr class="featurette-divider">
       <div class="row featurette">
           <h3 align="center" class="featurette-heading">Training the Model</h3>
-          <p class="lead" align="center" style="font-size: 14px;">We split the data in 90/10 ratio, where 90% of the dataset was used for training and 10% used for testing. We decided to use <b>decision trees</b> as our model as it would be easy to interpret the results obtained using prediction. Given below is the decision tree formed after training our model. In order to prevent overfitting of training data, we pruned the tree if further splitting on a node does not reduce training error by more than a factor of 0.01</p>
+          <p class="lead" align="center" style="font-size: 14px;">We split the data in 90/10 ratio, where 90% of the dataset was used for training and 10% used for testing. We decided to use <b>decision trees</b> as our model as it would be easy to interpret the results obtained using prediction. Given below is the decision tree formed after training our model (Chest pain type 1,2,3 correspond to typical angina, atypical angina, and non-anginal pain respectively. Remaining type 4 corresponds to asymptomatic chest pain). In order to prevent overfitting of training data, we pruned the tree if further splitting on a node does not reduce training error by more than a factor of 0.01</p>
 		<p><img src= "static/images/Decision_Tree_viz.png" height="600" width="900" style="margin: 0px 0px 0px 132px !important;"></p>
       </div>
 
@@ -73,6 +73,19 @@
         </div>
         <div class="col-md-6">
         <p><img src= "static/images/roc_plot.png" width = "600" height="400"></br></p>
+        </div>
+      </div>
+	  
+	    <div class="row featurette">
+          <h2 align="center" class="featurette-heading">Model Limitations and Future Work</h2>
+          <p class="lead" style="font-size: 14px;"> Given below are some of the limitations of our model: <br>
+		  1. <b>Small Dataset</b>: The dataset used to train our decision tree is very small (849 records) to be able to draw inferences on the entire world population suffering from heart dieases. The data we used was collected from four hospitals at different locations and may not be representative of the patients' characteristics from other locations. Hence the model we built may suffer from <b>Selection Bias</b> <br>
+		  2. <b>Sex Distribution Imbalance</b>: This data is also highly biased towards male population (about 80% of the data points are male patients). But we saw during data exploration that females are also very likely to contract heart diseases. In order to draw inferences on both male and female population, we need to use a dataset that has a balanced sex distribution. <br>
+		  3. <b>Model Validation</b>: We chose to build a decision tree so that its easy to interpret how the model works. Though the model works pretty good on our held out test data, it may have modeled some aspect incorrectly. Due to our limited domain knowledge, we cannot perform a sanity check on this model and would require collaborating with a doctor for model validation. <br>
+		  <br>
+		  <b>Future Work: </b>
+		  In addition to working with a larger dataset that is representative of the entire population, we would like to work with temporal data for these patients. Using wearable technology, we can monitor parameters such as blood pressure, heart rate, etc. to extract patterns based on activities performed by these patients. In addition to just predicting whether they are at risk of contracting heart disease, this could potentially enable us to advice them on daily activities that they should and shouldn't pursue. For instance, if the heart rate of a person climbing stairs is steadily increasing, we could alert them to stop and rest for a while before the heart rate reaches dangerous levels.
+		  </p>
         </div>
       </div>
 
