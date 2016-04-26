@@ -43,31 +43,16 @@
     <div class="container marketing">
 
 	  <h2 class="featurette-heading">Data Sources</h2></br>
-      <p class="lead" style="font-size: 14px;">We used two kinds of data sets to answer the two questions we formed. In order to answer the question on "How prevalent is Heart Disease in USA?" we used fact sheets published by Center for Disease Control and Prevention (CDC) and Henry J. Kaiser Family Foundation State Health Facts Project (respectivley found <a href = "http://www.cdc.gov/heartdisease/facts.htm"> here</a> and <a href="http://kff.org/state-category/health-status/heart-disease/">here.</a>)
+      <p class="lead" style="font-size: 14px;">We used two kinds of data sets to answer the two questions we formed. In order to answer the question on "How prevalent is Heart Disease in USA?" we used fact sheets published by <b>Center for Disease Control and Prevention (CDC)</b> and <b>Henry J. Kaiser Family Foundation State Health Facts Project</b> (respectivley found <a href = "http://www.cdc.gov/heartdisease/facts.htm"> here</a> and <a href="http://kff.org/state-category/health-status/heart-disease/">here.</a>)
 		  Various statistics about heart disease prevalance are regularly collected and maintained by CDC. Hence this dataset seemed to be right choice to talk about the prevalance of this disease.</p>
 		  <p class = "lead" style="font-size: 14px;"> In order to answer the question on "What may be the causes of heart disease?" and "What are my chances of being suffering from heart disease?" We used dataset published on <a href = "http://archive.ics.uci.edu/ml/datasets/Heart+Disease"> UCI data repository.</a> This dataset contained various characteristics of patients such as their cholestrol level, whether they had chest pain, age, sex, etc. along with whether they were diagnosed with a heart disease. Hence we used this dataset to provide insights on what may be the causes of heart diseases using the information provided for diagnosed patients.</p>
 		  
-      <p class = "lead" style="font-size: 14px;"> The datasets used for exploration from CDC did not require any processing. The data was very clean and coherent with no outliers. Hence we only discussed the UCI heart disease dataset in the following sections which have interesting data quality characteristics. </p>
+      <p class = "lead" style="font-size: 14px;"> The datasets used for exploration from CDC did not require any processing. The dataset collected from Henry J. Kaiser Family Foundation provides free and up-to-date health data for all 50 states. The State Health Facts database is comprised of multiple healhty indicators from
+          public and private sources that includes the Kaiser Family Foundation reports, public websites, government surveys and reports, and private organizations. Both these datasets were very clean and coherent with no outliers. Hence we only discussed the UCI heart disease dataset in the following sections which have interesting data quality characteristics. </p>
 
       <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
-
-       <div class="row featurette">
-
-        <div class="col-md-12">
-          <h4 class="featurette-heading" align="center"> Prevelance Data Set</h4>
-          <p class="lead" style="font-size: 14px;">This dataset was collected from the Henry J. Kaiser Family Foundation State Health Facts Project. This project provides free and up-to-date health data for all 50 states. The State Health Facts database is comprised of multiple healhty indicators from
-          public and private sources that includes the Kaiser Family Foundation reports, public websites, government surveys and reports, and private organizations. None of the datasets were missing values. 
-          </p>
-          <br>
-          <br>
-        </div>
-      </div>
-
-      <hr>
-
-
 
       <div class="row featurette">
         <div class="col-md-6">
@@ -101,17 +86,6 @@
 		  </div>
           <iframe width="1200" height="500" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas&amp;q=select+col0%2C+col2+from+19r9gybNVPSwLgxg1484ZWXAfoEbPLJvR9EEDq58p+order+by+col2+asc+limit+20&amp;viz=GVIZ&amp;t=COLUMN&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_vAxes=%5B%7B%22title%22%3Anull%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_useFirstColumnAsDomain=true&amp;gco_isStacked=false&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22viewWindow%22%3Anull%2C+%22viewWindowMode%22%3Anull%7D&amp;gco_legend=none&amp;gco_title=Percentage+of+Missing+Values&amp;gco_titleTextStyle=%7B%22color%22%3A%22%23000%22%2C+%22fontSize%22%3A%2224%22%2C+%22bold%22%3Atrue%7D&amp;gco_series=%7B%220%22%3A%7B%22color%22%3A%22%23a64d79%22%7D%7D&amp;gco_tooltip=%7B%22isHtml%22%3Atrue%7D&amp;tmplt=1&amp;width=1200&amp;height=500"></iframe>
 	
-	<hr class="featurette-divider">
-	<div class="row featurette">
-          <h4 class="featurette-heading" align="center">Outlier Analysis</h4>
-          <p class="lead" style="font-size: 14px;" align="center"> We analyzed 20 variables to test for outliers. To start the analysis we made a box plot for each variable and calculated a
-              a range of the values. Then we researched and collected the normal ranges for the variables from the internet to get a sense of the
-              acceptable values.We observed records that had 0 resting bp.As we can see from the box plots below, resting BP and resting heart rate seemed to have high number of outliers.It is highly unlikely that a person will have that value so we replaced the outlier with mean.Similarly for resting heart rate, some records had values less than 20 while the normal range allows for values between 40-120. Hence, once again we replaced the outliers with the mean.
-              </p>
-         <p><img src="{{datapipeproj1}}" height="300" width="500">
-            <img src="{{datapipeproj2}}" height="300" width="500"></p></p>
-		  </div>
-
     <hr class="featurette-divider">		  
 	<div class="row featurette">
           <h4 class="featurette-heading" align="center">Missing Values Imputation</h4>
@@ -121,10 +95,21 @@
 		  1. Continuous variables - using standard deviation since it introduced minimum bias in the data <br>
 		  2. Categorical variables - using most commonly observed value <br>
 		  <br>
-		  Given below is a sample of the dataset we used for predicting whether a person is at risk of suffering from heart disease. This dataset consists of 849 rows and 20 columns, including class label and feature corresponding to source of data (Cleveland, California, etc.) <br>
 		  
 		  </p>
-		  </div>	
+		  </div>
+
+<hr class="featurette-divider">
+	<div class="row featurette">
+          <h4 class="featurette-heading" align="center">Outlier Analysis</h4>
+          <p class="lead" style="font-size: 14px;" align="center"> We analyzed 20 variables to test for outliers. To start the analysis we made a box plot for each variable and calculated a
+              a range of the values. Then we researched and collected the normal ranges for the variables from the internet to get a sense of the
+              acceptable values.We observed records that had 0 resting bp.As we can see from the box plots below, resting BP and resting heart rate seemed to have high number of outliers.It is highly unlikely that a person will have that value so we replaced the outlier with mean.Similarly for resting heart rate, some records had values less than 20 while the normal range allows for values between 40-120. Hence, once again we replaced the outliers with the mean.
+              </p>
+         <p><img src="{{datapipeproj1}}" height="300" width="500">
+            <img src="{{datapipeproj2}}" height="300" width="500"></p></p>
+		  </div>
+		  
 		    
 
       </div>

@@ -264,22 +264,8 @@ def try1():
     excercise = request.form['excercise']
     oldpeak = request.form['oldpeak']
 
-    print("*"*100)
-    print("age : " + age)
-    print("sex : " + sex )
-    print("bp : " + bp )
-    print("chestpain : " + chestpain )
-    print("chol : " + chol )
-    print("thalach : " + thalach )
-    print("excercise : " + excercise )
-    print("oldpeak : " + oldpeak )
-
-
-
-
     res = hd_predict(cp = chestpain, exang = excercise, oldpeak = oldpeak, chol = chol, sex = sex, trestbps = bp, thalach = thalach, age = age)
-    print("%"*10)
-    print(res)
+    res = str(res)
 
 
     return template.render(chestpain = chestpain, age = age, sex= sex, bp = bp, chol = chol,thalach = thalach, excercise = excercise, oldpeak = oldpeak, res = res)
