@@ -27,20 +27,20 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/source_code">Sourcecode & System</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/data_structure">Predictive Model & Machine Learning</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/form">Heart Disease Risk</a>
+         <li class="nav-item">
+          <a class="nav-link" href="/quality">Data Quality</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/visual">Data Exploration</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/quality">Data Quality & About</a>
+          <a class="nav-link" href="/data_structure">Predictive Model & Machine Learning</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/source_code">Sourcecode & System</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/form">Heart Disease Risk</a>
         </li>
       </ul>
     </nav>
@@ -103,10 +103,19 @@
 
 
     <div class="jumbotron">
-      <h1>What is Heart disease?</h1>
-      <p>Heart disease, also known as coronary heart disease, encompasses a class 
-      of illnesses; all of which involve the heart, its vessels, and more. A brief
-      overview is provided below. </p>
+      <div class="row">
+        <div class="col-md-5">
+          <h1 align="right">What is Heart disease?</h1>
+        </div>
+      <!-- </div> -->
+      <!-- <div class="row"> -->
+        <div class="col-md-7">
+          <br></br>
+          <p>Heart disease, also known as coronary heart disease, encompasses a class 
+          of illnesses; all of which involve the heart, its vessels, and more. A brief
+          overview is provided below. </p>
+        </div>
+      </div>
     </div>
 
       <!-- Three columns of text below the carousel -->
@@ -148,35 +157,59 @@
         </div><!-- /.row -->
       </div>
 
+    <hr>
+
 
 
     <!--WHAT IS HEART DISEASE -->
     <div>
     </div>
 
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-5">
+          <h2 align="right">How many people suffer from heart disease?</h2>
+        </div>
+      <!-- </div> -->
+      <!-- <div class="row"> -->
+        <div class="col-md-7">
+          <p>Heart disease is a chronic illness that many Americans must manage in their day to day lives. 
+              Explore the chart below to see how many people are suffering from heart disease</p>
+        </div>
+      </div>
+    </div>
+
       <div align="center">
           <!--ADULTS WITH HEART DISEASE -->
-              <h1>Percent of Adults with Heart Disease</h1>
-              <a href="http://kff.org/other/state-indicator/percent-of-adults-with-cardiovascular-disease/#table">data source</a>
+              <a href="http://kff.org/other/state-indicator/percent-of-adults-with-cardiovascular-disease/#table"><h1>Percent of Adults with Heart Disease per State</h1></a>
           <div class="row">
             <div id="statetooltip"><svg id="extra"></svg></div>
             <svg width = "960" height ="600" id="diagnosed"></svg>
           </div>
       </div>
 
+      <hr>
+ 
 
 
     <!--MAP VIZ -->
-
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-5">
+          <h2 align="right">Do people die of heart disease?</h2>
+        </div>
+      <!-- </div> -->
+      <!-- <div class="row"> -->
+        <div class="col-md-7">
+          <p>While heart disease can be managed, it is still one of the leading causes of deaths
+          in the US. These visuals should give you a sense of the general rates of
+          heart disease mortality in the US. </p>
+        </div>
+      </div>
+    </div>
 
       <div align="center">
-          <h1>Number of Heart Disease Deaths per 100,000 Population</h1>
-          <p>With the following maps, you can explore how many heart disease deaths 
-          occur by gender in your own state and compare it to others. Are you living
-          in a state where high rates of heart disease? These visuals should give you 
-          a sense of the general rates of heart disease mortality in the US. 
-          </p>
-
+          <a href="http://kff.org/other/state-indicator/heart-disease-death-rate-by-gender/"><h1>Number of Heart Disease Deaths per 100,000 Population</h1></a>       
           <button id="both" type="button" class="btn danger-secondary">Both</button>
           <button id="female" type="button" class="btn danger-secondary">Female</button>
           <button id="male" type="button" class="btn danger-secondary">Male</button>
@@ -190,14 +223,27 @@
 
       <div id="tooltip"></div>
 
+      <hr>
+
+      <h2>Heart Disease is a serious condition, causing thousands of deaths 
+      every year and affecting large proportions of the general American population. 
+      You should understand the prevelance of this disease, and realize that you too 
+      should be concerned about heart disease.</h2>
+      <hr>
      
 
       <div class="jumbotron">
-          <h1><i>What is my risk of having heart disease?</i></h>
-          <p>Using our predictive model, you can receive a personalized assesment 
-          your hear disease risk.</p>
-          <a href="/form" class="btn btn-secondary">Get Started Now</a>
+          <h1 align="center"><i>What is my risk of having heart disease?</i></h1>
+          <div class="col-md-6">
+            <p align="left">Using our predictive model, you can receive a personalized assesment 
+            your hear disease risk. In better understanding your own risks, you can 
+            take the necessary steps to reduce your likelihood of contracting heart disease.</p>
+          </div>
+          <div class="col-md-6 text-center"> 
+            <a href="/form" class="btn btn-secondary">Get Started Now</a>
+          </div>
       </div>
+
 
       <!-- FOOTER -->
       <footer>

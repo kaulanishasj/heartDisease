@@ -20,59 +20,61 @@
   <body>
     <nav class="navbar navbar-static-top navbar-light bg-faded">
       <ul class="nav navbar-nav" style="margin: 19px 4px 13px 0px;">
-        <li class="nav-item">
+        <li class="nav-item ">
           <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/source_code">Sourcecode & System</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/data_structure">Predictive Model & Machine Learning</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/form">Heart Disease Risk</a>
+         <li class="nav-item">
+          <a class="nav-link" href="/quality">Data Quality</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/visual">Data Exploration</a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/data_structure">Predictive Model & Machine Learning</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/source_code">Sourcecode & System</a>
+        </li>
         <li class="nav-item">
-          <a class="nav-link" href="/quality">Data Quality & About</a>
+          <a class="nav-link" href="/form">Heart Disease Risk</a>
         </li>
       </ul>
     </nav>
+   
+
     <div class="container marketing">
-      <h4 class="featurette-heading">Data used for prediction</h4>
-	  <p class="lead"> Following is the data obtained after undergoing all the cleaning processes listed in the <b>Data Quality</b> page. <br>
-	  It consists of 849 records and 20 variables with the target variable we are trying to predict being <b>At risk?</b> <br>
-	  Binary variables present in the data have a '?' in the end and have value of 1 if true and 0 if false.
-	  <br>
-	
-		<iframe width="1200" height="300" scrolling="yes" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=GVIZ&amp;t=TABLE&amp;q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11%2C+col12%2C+col13%2C+col14%2C+col15%2C+col16%2C+col17%2C+col18%2C+col19+from+1XouYaDiGXVlYdtO9l3JE1G0eN063Z7Ob3ETneLFO&amp;containerId=googft-gviz-canvas"></iframe>
-		
+      <h4 class="featurette-heading" align="center">Data used for prediction</h4>
+  	  <p align="center" class="lead" style="font-size: 14px;"> Following is the data obtained after undergoing all the cleaning processes listed in the <b>Data Quality</b> page. <br>
+  	  It consists of 849 records and 20 variables with the target variable we are trying to predict being <b>At risk?</b> <br>
+  	  Binary variables present in the data have a '?' in the end and have value of 1 if true and 0 if false.
+  	  <br/>
+  	 <br/>
+  		<iframe width="1000" height="300" scrolling="yes" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=GVIZ&amp;t=TABLE&amp;q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11%2C+col12%2C+col13%2C+col14%2C+col15%2C+col16%2C+col17%2C+col18%2C+col19+from+1XouYaDiGXVlYdtO9l3JE1G0eN063Z7Ob3ETneLFO&amp;containerId=googft-gviz-canvas"></iframe>
+  		
       </br>
-  
-      <div align="center" id="chart"></div>
-
-
-     
+      <h4 class="featurette-heading" align="center">Data used for prediction</h4>
+      <p align="center" class="lead" style="font-size: 14px;"> Following is the data obtained after undergoing all the cleaning processes listed in the <b>Data Quality</b> page. <br>
+      It consists of 849 records and 20 variables with the target variable we are trying to predict being <b>At risk?</b> <br>
+      Binary variables present in the data have a '?' in the end and have value of 1 if true and 0 if false.
+      <br/>
+      <div style="margin: -36px 7px 17px 7px;" align="center" id="chart"></div>
 
       <hr class="featurette-divider">
-
       <div class="row featurette">
-          <h3 class="featurette-heading">Training the Model</h3>
-          <p class="lead">We split the data in 90/10 ratio, where 90% of the dataset was used for training and 10% used for testing. We decided to use <b>decision trees</b> as our model as it would be easy to interpret the results obtained using prediction. Given below is the decision tree formed after training our model. In order to prevent overfitting of training data, we pruned the tree if further splitting on a node does not reduce training error by more than a factor of 0.01</p>
-		<p><img src= "static/images/Decision_Tree_viz.png"></p>
+          <h3 align="center" class="featurette-heading">Training the Model</h3>
+          <p class="lead" align="center" style="font-size: 14px;">We split the data in 90/10 ratio, where 90% of the dataset was used for training and 10% used for testing. We decided to use <b>decision trees</b> as our model as it would be easy to interpret the results obtained using prediction. Given below is the decision tree formed after training our model. In order to prevent overfitting of training data, we pruned the tree if further splitting on a node does not reduce training error by more than a factor of 0.01</p>
+		<p><img src= "static/images/Decision_Tree_viz.png" height="600" width="900" style="margin: 0px 0px 0px 132px !important;"></p>
       </div>
 
       <hr class="featurette-divider">
 
       <div class="row featurette">
-        <div class="col-md-6">
-          <h2 class="featurette-heading">Model Tuning</h2>
-          <p class="lead">We extracted the output from decision trees in the form of probability of a data point being at risk of heart disease. Using these probabilities we performed ROC analysis looking at <b>True Positive</b> and <b>False Positive Rates</b>. Our goal was to increase True Positive Rate, i.e., probability of correctly classifying a person at risk, while keeping False Positive Rate, i.e., falsely classifying a person as at risk, in check. This is done to get high performance while reducing false alarms raised by the system.<br> We were able to achieve optimal values for a cutoff probability of 0.2. If the probability of being at risk is > 0.2, we classify that data point as being at risk. The accuracy obtained at this point is 77.6%, while True Positive Rate = 88.4% and False Positive Rate = 33.3%</p>
+        <div class="col-md-6" style="margin: 3px -20px 0px -54px;">
+          <h2 align="center" class="featurette-heading">Model Tuning</h2>
+          <p align="center" class="lead" style="font-size: 14px;">We extracted the output from decision trees in the form of probability of a data point being at risk of heart disease. Using these probabilities we performed ROC analysis looking at <b>True Positive</b> and <b>False Positive Rates</b>. Our goal was to increase True Positive Rate, i.e., probability of correctly classifying a person at risk, while keeping False Positive Rate, i.e., falsely classifying a person as at risk, in check. This is done to get high performance while reducing false alarms raised by the system.<br> We were able to achieve optimal values for a cutoff probability of 0.2. If the probability of being at risk is > 0.2, we classify that data point as being at risk. The accuracy obtained at this point is 77.6%, while True Positive Rate = 88.4% and False Positive Rate = 33.3%</p>
         </div>
         <div class="col-md-6">
-        <p><img src= "static/images/roc_plot.png" height = "400" width = "600"></br></p>
+        <p><img src= "static/images/roc_plot.png" width = "600" height="400"></br></p>
         </div>
       </div>
 
