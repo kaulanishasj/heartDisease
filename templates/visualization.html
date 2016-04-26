@@ -43,9 +43,9 @@
         </li>
       </ul>
     </nav>
-   
-    
-
+      <h1 class="featurette-heading" align="center"> Parallel Coordinates </h1>
+      <p align="center" class="lead" style="font-size: 14px;"> This parallel Coordinates interactive visualization can be used to understand the relationship between the dimensions of data that we used to explore different causes of deathe due to heart attacks. You can brush across the axes, choose the axes for exploration dynamically. The data is sourced from four different different locations: Switzerland, Hungry, Cleaveland, Long Beach. The point on the axes does not represent the different data point but just a single line for each unit onthe scale.</p>
+      <br/>
   <div class="checkchecks">
     <fieldset class="group">
       <ul class="checkbox" style = "margin: 0px 0px 0px 33px;"> 
@@ -54,15 +54,12 @@
             <li><input type="checkbox" id="cb1" value={{header}} name="type"/><label for="cb1">{{translators[header]}}</label></li>
           {% endif %}
          {% endfor %}
-    </fieldset> 
-     <h4 class="featurette-heading" align="center">Data used for prediction</h4>
-      <p align="center" class="lead" style="font-size: 14px;"> Following is the data obtained after undergoing all the cleaning processes listed in the <b>Data Quality</b> page. <br>
-      It consists of 849 records and 20 variables with the target variable we are trying to predict being <b>At risk?</b> <br>
-      Binary variables present in the data have a '?' in the end and have value of 1 if true and 0 if false.
-      <br/>
-   <div class="row" >
+    </fieldset>
+     <div class="row" >
        <button style = "margin: 18px 13px 8px 103px;" class = "btn btn-warning" id="checkchecks">Display Selected Axes</button>
-    </div>
+    </div> 
+      <img align="left" src="{{image6}}" height="200" width="200" style="margin:28px 0px 0px 1087px"></br>
+
   </div>
 
 
@@ -107,13 +104,9 @@
             background,
             foreground;
 
-
-        console.log("*************");
-        console.log(d3.selectAll(".checkchecks")[0])
-
         svg = d3.selectAll(".checkchecks").append("svg").attr("id", "anisha")
             .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
+            .attr("height", height + margin.top + margin.bottom).attr("style", "margin: -200px -15px -6px -76px;")
             .append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     }
 
@@ -130,7 +123,7 @@
 
       var color = d3.scale.ordinal()
                   .domain(['cleveland','long_beach_va_clean','hungarian', 'switzerland'])
-                  .range(['red','blue','green', 'yellow'])
+                  .range(['red','blue',"#008000", 'yellow'])
 
     // Extract the list of dimensions and create a scale for each.
    

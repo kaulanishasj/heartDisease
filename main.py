@@ -206,10 +206,11 @@ def visual():
                               'thaldur' : "Duration of Exercise Test(mins)" , 
                               'thalrest' : "Resting Heart Rate", 'datasource' : "Source of the Data", 'num' : "Diagnosed with Heart Disease"}
 
-    variables = {'rows':rows, 'translators':translators, 'array':array}
+    image6 = url_for('static', filename='images/image_6.png')
+    variables = {'rows':rows, 'translators':translators, 'array':array, 'image6': image6}
+
     template = JINJA_ENVIRONMENT.get_template('templates/visualization.html')
     return template.render(variables)
-
 
 
 @app.route('/prediction')
