@@ -181,7 +181,7 @@
 
       <div align="center">
           <!--ADULTS WITH HEART DISEASE -->
-              <a href="http://kff.org/other/state-indicator/percent-of-adults-with-cardiovascular-disease/#table"><h1>Percent of Adults with Heart Disease per State</h1></a>
+              <a href="http://kff.org/other/state-indicator/percent-of-adults-with-cardiovascular-disease/#table"><h1>Percent of Adults Living with Heart Disease per State</h1></a>
           <div class="row">
             <div id="statetooltip"><svg id="extra"></svg></div>
             <svg width = "960" height ="600" id="diagnosed"></svg>
@@ -376,7 +376,7 @@
 
                         var percent = (percentData[states[d]]);
                         console.log(percent)
-                        percentSample[d]={percent:percent, color:d3.interpolate("#ffffcc", "#800026")(percent/100)}; 
+                        percentSample[d]={percent:percent, color:d3.interpolate("#ffffcc", "#00805a")(percent/0.1)}; 
                     });
 
                 console.log(percentSample)
